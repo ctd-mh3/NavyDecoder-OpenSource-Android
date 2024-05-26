@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Navy Decoder</string>
+
+  <!-- Menu Information -->
+  <string name="about">About</string>
+  <string name="emailAuthor">Email Author</string>
+  <string name="openSource">Open Source</string>
+  <string name="authorEmailAddress">support@crashtestdummylimited.com</string>
+  <string name="authorEmailSubject">Navy Decoder</string>
+  <string name="chooserTitle">Email with</string>
+
+  <!-- About Dialog Information -->
+  <string name="aboutTitle">About Navy Decoder</string>
+  <string name="aboutApplicationPurpose">Application for decoding various US Navy information.</string>
+  <string name="aboutDeveloper">Developed by Crash Test Dummy (support@crashtestdummylimited.com).</string>
+  <string name="aboutComments">If you like this App, please leave a review in Google Play.  If there are issues, please email me.  Pass me suggestions to make the app better.  Thanks!</string>
+  <string name="aboutDisclaimer">This application is not officially endorsed or sponsored by the US Navy or Department of Defense.</string>
+  <string name="aboutVersion">Version:"</string>
+
+  <!-- Open Source Dialog Information -->
+  <string name="opensourceTitle">Open Source Info</string>
+  <string name="opensourceNoticeLine1">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
+  <string name="opensourceNoticeLine2">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</string>
+  <string name="opensourceNoticeLine3">A copy of the GNU General Public License is available at https://www.gnu.org/licenses.</string>
+
+  <!-- No email app installed -->
+  <string name="emailErrorTitle">Email Error</string>
+  <string name="emailErrorMessage">Your device has no email application installed.</string>
+
+  <!-- Rate Request Information -->
+  <string name="rateTitle">Rate Navy Decoder</string>
+  <string name="rateRequest">If you enjoy using this app, please take a moment to rate it. Your support is appreciated!</string>
+  <string name="rateRateButton">Rate This App</string>
+  <string name="rateLaterButton">Remind Me Later</string>
+  <string name="rateNoThanksButton">No, Thanks</string>
+
+  <!-- Change Log Dialog Information -->
+  <string name="changelog_title">Changelog:</string>
+
+  <string name="topLevelDescription">Quick reference to various US Navy related codes</string>
+
+  <string name="mainDecodeDescription">Code Category To Decode:</string>
+  <string name="mainDecodePrompt">Select Code Category To Decode</string>
+
+  <string name="secondaryDecodeDescription">Specific Code To Decode:</string>
+  <string name="secondaryDecodePrompt">Select Code To Decode</string>
+
+  <string name="rfasFirstCharacterPrompt">Select 1st Character Of RFAS Code</string>
+  <string name="rfasSecondAndThirdCharactersPrompt">Select 2nd and 3rd Characters Of RFAS Code</string>
+  <string name="rfasFourthCharactersPrompt">Select 4th Character Of RFAS Code</string>
+
+
+  <string name="decodeDescription">Code Meaning:</string>
+
+  <string name="sourceDescription">Source of Data:</string>
+
+
+  <!--  Level 0 Menu List -->
+  <!--  WARNING-  Do not change these strings w/o also changing NavyReference.java -->
+  <string-array name="level0_list_array">
+    <item>Enlisted Rating Codes</item>
+    <item>IMS Codes</item>
+    <item>MAS Codes</item>
+    <item>Navy Reserve Activity Codes</item>
+    <item>NOBC Codes</item>
+    <item>Officer Billet Codes</item>
+    <item>Officer Designator Codes</item>
+    <item>Officer Paygrade Codes</item>
+    <item>RBSC Billet Codes</item>
+    <item>Reserve Program Codes</item>
+    <item>Reserve Unit Identification Codes</item>
+    <item>RFAS-Enlisted Codes</item>
+    <item>RFAS-Officer Codes</item>
+    <item>Subspeciality Codes</item>
+  </string-array>
+  <!--
+     <string-array name="level0_list_array">
+          <item>AQD Codes</item>
+          <item>NECs</item>
+          <item>OSD Codes</item>
+      </string-array>
+  -->
+</resources>

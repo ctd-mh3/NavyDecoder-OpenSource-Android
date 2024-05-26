@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <dimen name="applicationTheme_textSize">30sp</dimen>
+
+  <dimen name="mainDescription_textSize">25sp</dimen>
+  <dimen name="mainDescription_paddingTop">20dp</dimen>
+  <dimen name="mainDescription_paddingBottom">20dp</dimen>
+
+  <dimen name="mainDecodeDescription_textSize">25sp</dimen>
+  <dimen name="mainDecodeDescription_paddingTop">20dp</dimen>
+
+  <dimen name="mainDecodeSpinner_marginTop">20dp</dimen>
+  <dimen name="mainDecodeSpinner_marginBottom">20dp</dimen>
+
+  <dimen name="decodeDescription_textSize">25sp</dimen>
+
+  <dimen name="listItem_textSize">25sp</dimen>
+
+  <dimen name="RateDialogHeader_textSize">40sp</dimen>
+
+</resources>

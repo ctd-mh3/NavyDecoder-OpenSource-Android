@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+      style="@style/MainDescription"
+      android:text="@string/topLevelDescription" />
+
+    <TextView
+      style="@style/MainDecodeDescription"
+      android:text="@string/mainDecodeDescription" />
+
+    <Spinner
+      android:id="@+id/mainDecodeSpinner"
+      style="@style/MainDecodeSpinner"
+      android:prompt="@string/mainDecodePrompt" />
+
+    <TextView
+      style="@style/MainDecodeDescription"
+      android:text="@string/secondaryDecodeDescription" />
+
+    <Spinner
+      android:id="@+id/secondaryDecodeSpinner"
+      style="@style/MainDecodeSpinner"
+      android:prompt="@string/secondaryDecodePrompt" />
+
+    <RelativeLayout
+      android:id="@+id/rfasEnlistedSpinnerLayout"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+      <Spinner
+        android:id="@+id/rfasEnlistedFirstCharacter"
+        style="@style/MainDecodeSpinner"
+        android:prompt="@string/rfasFirstCharacterPrompt" />
+
+      <Spinner
+        android:id="@+id/rfasEnlistedSecondAndThirdCharacter"
+        style="@style/MainDecodeSpinner"
+        android:layout_toEndOf="@id/rfasEnlistedFirstCharacter"
+        android:prompt="@string/rfasSecondAndThirdCharactersPrompt" />
+
+      <Spinner
+        android:id="@+id/rfasEnlistedFourthCharacter"
+        style="@style/MainDecodeSpinner"
+        android:layout_toEndOf="@id/rfasEnlistedSecondAndThirdCharacter"
+        android:prompt="@string/rfasFourthCharactersPrompt" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+      android:id="@+id/rfasOfficerSpinnerLayout"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+      <Spinner
+        android:id="@+id/rfasOfficerFirstCharacter"
+        style="@style/MainDecodeSpinner"
+        android:prompt="@string/rfasFirstCharacterPrompt" />
+
+      <Spinner
+        android:id="@+id/rfasOfficerSecondAndThirdCharacter"
+        style="@style/MainDecodeSpinner"
+        android:layout_toEndOf="@id/rfasOfficerFirstCharacter"
+        android:prompt="@string/rfasSecondAndThirdCharactersPrompt" />
+
+      <Spinner
+        android:id="@+id/rfasOfficerFourthCharacter"
+        style="@style/MainDecodeSpinner"
+        android:layout_toEndOf="@id/rfasOfficerSecondAndThirdCharacter"
+        android:prompt="@string/rfasFourthCharactersPrompt" />
+    </RelativeLayout>
+
+    <TextView
+      style="@style/MainDecodeDescription"
+      android:text="@string/decodeDescription" />
+
+    <TextView
+      android:id="@+id/decodeDescription"
+      style="@style/DecodeDescription" />
+
+    <TextView
+      style="@style/MainDecodeDescription"
+      android:text="@string/sourceDescription" />
+
+    <TextView
+      android:id="@+id/sourceDescription"
+      style="@style/DecodeDescription" />
+  </LinearLayout>
+</ScrollView>
