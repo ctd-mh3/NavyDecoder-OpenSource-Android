@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Colors explained
+  https://stackoverflow.com/questions/18288402/how-to-set-custom-actionbar-color-style/32324163#32324163
+  -->
+
+  <color name="appBackground">#000000</color>
+  <color name="mainDescription_Background">#656060</color>
+  <color name="decodeDescription_Background">#656060</color>
+
+  <!--   your app branding color for the app bar -->
+  <color name="colorPrimary">#0446ef</color>
+  <!--   darker variant for the status bar and contextual app bars -->
+  <color name="colorPrimaryDark">#303F9F</color>
+  <!--   theme UI controls like checkboxes and text fields -->
+  <color name="colorAccent">#FFFFFF</color>
+  <color name="applicationTextColor">#FFFFFF</color>
+  <color name="spinnerText">#FFFFFF</color>
+  <!-- Sets the color of the text in a spinner when the user has opened the spinner to select a new value -->
+  <color name="spinnerTextColor">#FFFFFF</color>
+  <!-- Sets the color for the text background in a spinner before the user selects a new value -->
+  <color name="spinnerPopupBackgroundColor">#797676</color>
+
+  <!-- Rater dialog -->
+  <color name="raterButtonTextColor">#FFFFFF</color>
+
+  <!-- Menu -->
+  <color name="menuTextColor">#FFFFFF</color>
+  <color name="menuBackgroundColor">#656060</color>
+
+</resources>
