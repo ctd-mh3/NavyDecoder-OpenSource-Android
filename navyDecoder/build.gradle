@@ -4,14 +4,17 @@ buildscript {
 apply plugin: 'com.android.application'
 
 repositories {
-    mavenCentral() // MoPub SDK is now available in Maven Central
+    mavenCentral()
+
+    maven {
+        url 'https://maven.google.com'
+    }
 }
 
 android {
 
-    compileSdk 34
     // https://developer.android.com/studio/build/shrink-code#keep-code
-    // 20210130: Currently I do not build Android App Bundles, so the below is not used
+    // 20210130: Currently do not build Android App Bundles, so the below is not used
     //android.buildTypes.release.ndk.debugSymbolLevel = 'FULL'
 
     // TO-DO: Do this after each release
@@ -24,6 +27,7 @@ android {
     defaultConfig {
         applicationId "com.crashtestdummylimited.navydecoder"
         minSdkVersion 26
+        compileSdk 34
         targetSdkVersion 34
     }
 
@@ -63,7 +67,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation "androidx.preference:preference:1.2.1"
-    implementation 'androidx.appcompat:appcompat:1.7.0-rc01'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.browser:browser:1.8.0'
     implementation 'androidx.media:media:1.7.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
