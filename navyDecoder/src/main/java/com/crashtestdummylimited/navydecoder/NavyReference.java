@@ -352,8 +352,6 @@ public class NavyReference extends AppCompatActivity {
 
       final TextView sourceTextView = findViewById(R.id.sourceDescription);
       sourceTextView.setText(sourceInfo);
-
-
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
