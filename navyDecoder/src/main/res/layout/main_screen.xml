@@ -32,50 +32,27 @@
       android:prompt="@string/secondaryDecodePrompt" />
 
     <RelativeLayout
-      android:id="@+id/rfasEnlistedSpinnerLayout"
+      android:id="@+id/rfasSpinnerLayout"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content">
 
       <Spinner
-        android:id="@+id/rfasEnlistedFirstCharacter"
+        android:id="@+id/rfasFirstCharacter"
         style="@style/MainDecodeSpinner"
         android:prompt="@string/rfasFirstCharacterPrompt" />
 
       <Spinner
-        android:id="@+id/rfasEnlistedSecondAndThirdCharacter"
+        android:id="@+id/rfasSecondAndThirdCharacter"
         style="@style/MainDecodeSpinner"
-        android:layout_toEndOf="@id/rfasEnlistedFirstCharacter"
+        android:layout_toEndOf="@id/rfasFirstCharacter"
         android:prompt="@string/rfasSecondAndThirdCharactersPrompt" />
 
       <Spinner
-        android:id="@+id/rfasEnlistedFourthCharacter"
+        android:id="@+id/rfasFourthCharacter"
         style="@style/MainDecodeSpinner"
-        android:layout_toEndOf="@id/rfasEnlistedSecondAndThirdCharacter"
+        android:layout_toEndOf="@id/rfasSecondAndThirdCharacter"
         android:prompt="@string/rfasFourthCharactersPrompt" />
 
-    </RelativeLayout>
-
-    <RelativeLayout
-      android:id="@+id/rfasOfficerSpinnerLayout"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content">
-
-      <Spinner
-        android:id="@+id/rfasOfficerFirstCharacter"
-        style="@style/MainDecodeSpinner"
-        android:prompt="@string/rfasFirstCharacterPrompt" />
-
-      <Spinner
-        android:id="@+id/rfasOfficerSecondAndThirdCharacter"
-        style="@style/MainDecodeSpinner"
-        android:layout_toEndOf="@id/rfasOfficerFirstCharacter"
-        android:prompt="@string/rfasSecondAndThirdCharactersPrompt" />
-
-      <Spinner
-        android:id="@+id/rfasOfficerFourthCharacter"
-        style="@style/MainDecodeSpinner"
-        android:layout_toEndOf="@id/rfasOfficerSecondAndThirdCharacter"
-        android:prompt="@string/rfasFourthCharactersPrompt" />
     </RelativeLayout>
 
     <TextView

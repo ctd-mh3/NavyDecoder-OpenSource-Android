@@ -19,6 +19,7 @@
 package com.crashtestdummylimited.navydecoder;
 
 import com.crashtestdummylimited.navydecoder.controller.MenuOptions;
+import com.crashtestdummylimited.navydecoder.databinding.MainScreenBinding;
 import com.crashtestdummylimited.navydecoder.model.IMSCodes;
 import com.crashtestdummylimited.navydecoder.model.MASCodes;
 import com.crashtestdummylimited.navydecoder.model.NOBCCodes;
@@ -50,7 +51,6 @@ import androidx.preference.PreferenceManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,13 +61,20 @@ public class NavyReference extends AppCompatActivity {
 
   private static final String TAG = NavyReference.class.getSimpleName();
 
+  private MainScreenBinding mBinding;
+
   /**
    * Key for latest version code preference.
    */
   private static final String LAST_VERSION_CODE_KEY = "last_version_code";
 
-  private ReferenceData referenceData;
-  private RFASReferenceData rfasReferenceData;
+  private ReferenceData mReferenceData;
+  private RFASReferenceData mRfasReferenceData;
+
+  private enum Layouts {
+    NON_RFAS,
+    RFAS
+  }
 
   //*************************************************************************
   //
@@ -92,19 +99,17 @@ public class NavyReference extends AppCompatActivity {
 
 
   private void setupSpinner(OnItemSelectedListener listener) {
-    Spinner spinner = findViewById(R.id.mainDecodeSpinner);
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
         this, R.array.level0_list_array, android.R.layout.simple_spinner_item);
 
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    spinner.setAdapter(adapter);
+    mBinding.mainDecodeSpinner.setAdapter(adapter);
 
-    spinner.setOnItemSelectedListener(listener);
+    mBinding.mainDecodeSpinner.setOnItemSelectedListener(listener);
   }
 
-  private void setupSpinnerFromArray(int spinnerId, String[] stringArray, OnItemSelectedListener listener) {
-    Spinner spinner = findViewById(spinnerId);
+  private void setupSpinnerFromArray(Spinner spinner, String[] stringArray, OnItemSelectedListener listener) {
 
     ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(
         this, android.R.layout.simple_spinner_item, stringArray);
@@ -126,11 +131,13 @@ public class NavyReference extends AppCompatActivity {
 
     setTheme(R.style.ApplicationTheme);
 
-    setContentView(R.layout.main_screen);
+    mBinding = MainScreenBinding.inflate(getLayoutInflater());
+    View view = mBinding.getRoot();
+    setContentView(view);
 
     // Setup all the spinners
     setupSpinner(new MainDecoderItemSelectedListener());
-    setupSpinnerFromArray(R.id.secondaryDecodeSpinner, (new IMSCodes()).getKeys(), new SecondaryDecoderItemSelectedListener());
+    setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, (new IMSCodes()).getKeys(), new SecondaryDecoderItemSelectedListener());
 
     // For debugging
     //AppRater.showRateDialog(this, null);
@@ -146,30 +153,18 @@ public class NavyReference extends AppCompatActivity {
   }
 
 
-  private void updateLayoutDueToMainDecoderItemSelection(int pos) {
+  private void updateLayoutDueToMainDecoderItemSelection(Layouts layout) {
 
-    // TODO- Do this in a more robust manor
-    switch (pos) {
-
-      // Default layout w/ simple secondary spinner 
-      case 0:
-        findViewById(R.id.secondaryDecodeSpinner).setVisibility(android.view.View.VISIBLE);
-        findViewById(R.id.rfasEnlistedSpinnerLayout).setVisibility(android.view.View.GONE);
-        findViewById(R.id.rfasOfficerSpinnerLayout).setVisibility(android.view.View.GONE);
-        break;
-      // Layout option for RFAS-Enlisted spinner layout
-      case 1:
-        findViewById(R.id.secondaryDecodeSpinner).setVisibility(android.view.View.GONE);
-        findViewById(R.id.rfasEnlistedSpinnerLayout).setVisibility(android.view.View.VISIBLE);
-        findViewById(R.id.rfasOfficerSpinnerLayout).setVisibility(android.view.View.GONE);
-        break;
-      // Layout option for RFAS-Officer spinner layout
-      case 2:
-        findViewById(R.id.secondaryDecodeSpinner).setVisibility(android.view.View.GONE);
-        findViewById(R.id.rfasEnlistedSpinnerLayout).setVisibility(android.view.View.GONE);
-        findViewById(R.id.rfasOfficerSpinnerLayout).setVisibility(android.view.View.VISIBLE);
-        break;
+    if (layout == Layouts.NON_RFAS) {
+      // Default layout w/ simple secondary spinner
+      mBinding.secondaryDecodeSpinner.setVisibility(android.view.View.VISIBLE);
+      mBinding.rfasSpinnerLayout.setVisibility(android.view.View.GONE);
     }
+    else {
+      // Layout option for RFAS spinner layout
+      mBinding.secondaryDecodeSpinner.setVisibility(android.view.View.GONE);
+      mBinding.rfasSpinnerLayout.setVisibility(android.view.View.VISIBLE);
+     }
   }
 
 
@@ -181,104 +176,86 @@ public class NavyReference extends AppCompatActivity {
 
       String selectedString = parent.getItemAtPosition(pos).toString();
 
-      int layoutOption = 0;
-/*
-          <item>IMS Codes</item>
-          <item>MAS Codes</item>
-          <item>Navy Reserve Activity Codes</item>
-          <item>NOBC Codes</item>
-          <item>Officer Billet Codes</item>
-          <item>Officer Designator Codes</item>
-          <item>Officer Paygrade Codes</item>
-          <item>RBSC Billet Codes</item>
-          <item>Reserve Program Codes</item>
-          <item>Reserve Unit Identification Codes</item>
-          <item>RFAS-Enlisted Codes</item>
-          <item>RFAS-Officer Codes</item>
-          <item>Subspeciality Codes</item>
-*/
       switch (selectedString) {
         case "Enlisted Rating Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new RatingCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new RatingCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "IMS Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new IMSCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new IMSCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "MAS Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new MASCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new MASCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "Navy Reserve Activity Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new NRACodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new NRACodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "NOBC Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new NOBCCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new NOBCCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "Officer Billet Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new OfficerBilletCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new OfficerBilletCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "Officer Designator Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new OfficerDesignatorCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new OfficerDesignatorCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "Officer Paygrade Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new OfficerPaygradeCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new OfficerPaygradeCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "RBSC Billet Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new RBSCBilletCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new RBSCBilletCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "Reserve Program Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new ReserveProgramCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new ReserveProgramCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "Reserve Unit Identification Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new RUICCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new RUICCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         case "RFAS-Enlisted Codes":
-          layoutOption = 1;
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          rfasReferenceData = new RFASEnlistedCodes();
-          setupSpinnerFromArray(R.id.rfasEnlistedFirstCharacter, rfasReferenceData.getFirstCharacterKeys(), new RFASDecoderItemSelectedListener());
-          setupSpinnerFromArray(R.id.rfasEnlistedSecondAndThirdCharacter, rfasReferenceData.getSecondAndThirdCharacterKeys(), new RFASDecoderItemSelectedListener());
-          setupSpinnerFromArray(R.id.rfasEnlistedFourthCharacter, rfasReferenceData.getFourthCharacterKeys(), new RFASDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.RFAS);
+          mRfasReferenceData = new RFASEnlistedCodes();
+          setupSpinnerFromArray(mBinding.rfasFirstCharacter, mRfasReferenceData.getFirstCharacterKeys(), new RFASDecoderItemSelectedListener());
+          setupSpinnerFromArray(mBinding.rfasSecondAndThirdCharacter, mRfasReferenceData.getSecondAndThirdCharacterKeys(), new RFASDecoderItemSelectedListener());
+          setupSpinnerFromArray(mBinding.rfasFourthCharacter, mRfasReferenceData.getFourthCharacterKeys(), new RFASDecoderItemSelectedListener());
           break;
         case "RFAS-Officer Codes":
-          layoutOption = 1;
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          rfasReferenceData = new RFASOfficerCodes();
-          setupSpinnerFromArray(R.id.rfasEnlistedFirstCharacter, rfasReferenceData.getFirstCharacterKeys(), new RFASDecoderItemSelectedListener());
-          setupSpinnerFromArray(R.id.rfasEnlistedSecondAndThirdCharacter, rfasReferenceData.getSecondAndThirdCharacterKeys(), new RFASDecoderItemSelectedListener());
-          setupSpinnerFromArray(R.id.rfasEnlistedFourthCharacter, rfasReferenceData.getFourthCharacterKeys(), new RFASDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.RFAS);
+          mRfasReferenceData = new RFASOfficerCodes();
+          setupSpinnerFromArray(mBinding.rfasFirstCharacter, mRfasReferenceData.getFirstCharacterKeys(), new RFASDecoderItemSelectedListener());
+          setupSpinnerFromArray(mBinding.rfasSecondAndThirdCharacter, mRfasReferenceData.getSecondAndThirdCharacterKeys(), new RFASDecoderItemSelectedListener());
+          setupSpinnerFromArray(mBinding.rfasFourthCharacter, mRfasReferenceData.getFourthCharacterKeys(), new RFASDecoderItemSelectedListener());
           break;
         case "Subspeciality Codes":
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new SSPCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new SSPCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
         default:
           // Unclear if this can occur, but set a default value to prevent referenceData null pointer reference
-          updateLayoutDueToMainDecoderItemSelection(layoutOption);
-          referenceData = new RatingCodes();
-          setupSpinnerFromArray(R.id.secondaryDecodeSpinner, referenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
+          updateLayoutDueToMainDecoderItemSelection(Layouts.NON_RFAS);
+          mReferenceData = new RatingCodes();
+          setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, mReferenceData.getKeys(), new SecondaryDecoderItemSelectedListener());
           break;
       }
     }
@@ -294,30 +271,21 @@ public class NavyReference extends AppCompatActivity {
     public void onItemSelected(AdapterView<?> parent,
                                View view, int pos, long id) {
 
-      Spinner tempSpinner = findViewById(R.id.rfasEnlistedFirstCharacter);
-      String firstCharacterKey = tempSpinner.getItemAtPosition(tempSpinner.getSelectedItemPosition()).toString();
-      String firstCharacterValue = rfasReferenceData.getFirstCharacterValue(firstCharacterKey);
+      String firstCharacterKey = mBinding.rfasFirstCharacter.getItemAtPosition(mBinding.rfasFirstCharacter.getSelectedItemPosition()).toString();
+      String firstCharacterValue = mRfasReferenceData.getFirstCharacterValue(firstCharacterKey);
 
+      String secondAndThirdCharacterKey = mBinding.rfasSecondAndThirdCharacter.getItemAtPosition(mBinding.rfasSecondAndThirdCharacter.getSelectedItemPosition()).toString();
+      String secondAndThirdCharacterValue = mRfasReferenceData.getSecondAndThirdCharacterValue(secondAndThirdCharacterKey);
 
-      tempSpinner = findViewById(R.id.rfasEnlistedSecondAndThirdCharacter);
-      String secondAndThirdCharacterKey = tempSpinner.getItemAtPosition(tempSpinner.getSelectedItemPosition()).toString();
-      String secondAndThirdCharacterValue = rfasReferenceData.getSecondAndThirdCharacterValue(secondAndThirdCharacterKey);
-
-      tempSpinner = findViewById(R.id.rfasEnlistedFourthCharacter);
-      String fourthCharacterKey = tempSpinner.getItemAtPosition(tempSpinner.getSelectedItemPosition()).toString();
-      String fourthCharacterValue = rfasReferenceData.getFourthCharacterValue(fourthCharacterKey);
+      String fourthCharacterKey = mBinding.rfasFourthCharacter.getItemAtPosition(mBinding.rfasFourthCharacter.getSelectedItemPosition()).toString();
+      String fourthCharacterValue = mRfasReferenceData.getFourthCharacterValue(fourthCharacterKey);
 
 
       String resultString = firstCharacterValue + "\n" + secondAndThirdCharacterValue + "\n" + fourthCharacterValue;
+      mBinding.decodeDescription.setText(resultString);
 
-      final TextView decodeTextView = findViewById(R.id.decodeDescription);
-
-      decodeTextView.setText(resultString);
-
-      String SOURCE_INFO = rfasReferenceData.getSourceInfo();
-
-      final TextView sourceTextView = findViewById(R.id.sourceDescription);
-      sourceTextView.setText(SOURCE_INFO);
+      String SOURCE_INFO = mRfasReferenceData.getSourceInfo();
+      mBinding.sourceDescription.setText(SOURCE_INFO);
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -336,22 +304,19 @@ public class NavyReference extends AppCompatActivity {
       String resultString;
       String sourceInfo;
 
-      if (referenceData != null) {
-        // Only user referenceData is not null.  As of 21JUL2012, there were app crashes when 
+      if (mReferenceData != null) {
+        // Ensure user referenceData is not null.  As of 21JUL2012, there were app crashes when
         //   referenceData was used without this check.
-        resultString = referenceData.getValue(key);
-        sourceInfo = referenceData.getSourceInfo();
+        resultString = mReferenceData.getValue(key);
+        sourceInfo = mReferenceData.getSourceInfo();
       } else {
         //  In case the referenceData has not been set yet, just show blank
         resultString = "";
         sourceInfo = "";
       }
 
-      final TextView decodeTextView = findViewById(R.id.decodeDescription);
-      decodeTextView.setText(resultString);
-
-      final TextView sourceTextView = findViewById(R.id.sourceDescription);
-      sourceTextView.setText(sourceInfo);
+      mBinding.decodeDescription.setText(resultString);
+      mBinding.sourceDescription.setText(sourceInfo);
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -366,9 +331,8 @@ public class NavyReference extends AppCompatActivity {
    * else <code>false</code>
    */
   private boolean isUpdate() {
-    // Get the versionCode of the Package, which must be different
-    // (incremented) in each release on the market in the
-    // AndroidManifest.xml
+    // Get the versionCode of the Package, which must be different (incremented) in each release
+    //  in AndroidManifest.xml
     final long versionCode = CommonUtilities.getActualVersionCode(this);
 
     final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
