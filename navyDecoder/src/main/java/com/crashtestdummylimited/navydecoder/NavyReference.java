@@ -173,7 +173,6 @@ public class NavyReference extends AppCompatActivity {
 
   private class MainDecoderItemSelectedListener implements OnItemSelectedListener {
 
-    @SuppressWarnings("DuplicateBranchesInSwitch")
     public void onItemSelected(AdapterView<?> parent,
                                View view, int pos, long id) {
 
