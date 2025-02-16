@@ -2,23 +2,22 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="576"
    height="576"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
    sodipodi:docname="NavyDecoder-NoPlus-MessingWithBackground.svg"
-   inkscape:export-filename="/Users/michael/Downloads/Test.png"
    inkscape:export-xdpi="159.24614"
-   inkscape:export-ydpi="159.24614">
+   inkscape:export-ydpi="159.24614"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <title
      id="title2883">Radar</title>
   <defs
@@ -125,7 +124,11 @@
     <filter
        inkscape:collect="always"
        id="filter3874"
-       color-interpolation-filters="sRGB">
+       color-interpolation-filters="sRGB"
+       x="-0.060971905"
+       y="-0.059046477"
+       width="1.1219438"
+       height="1.118093">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="2.3609854"
@@ -154,7 +157,7 @@
     <filter
        inkscape:collect="always"
        id="filter3939"
-       x="-0.37058821"
+       x="-0.37058822"
        width="1.7411764"
        y="-0.35000002"
        height="1.7"
@@ -213,7 +216,11 @@
     <filter
        inkscape:collect="always"
        id="filter4017"
-       color-interpolation-filters="sRGB">
+       color-interpolation-filters="sRGB"
+       x="-0.046755555"
+       y="-0.049312502"
+       width="1.0935111"
+       height="1.098625">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="0.93928574"
@@ -248,35 +255,42 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70326797"
-     inkscape:cx="1.5055723"
-     inkscape:cy="254.60212"
+     inkscape:cx="1.4219331"
+     inkscape:cy="254.52602"
      inkscape:document-units="px"
      inkscape:current-layer="layer6"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="851"
+     inkscape:window-width="1200"
+     inkscape:window-height="1027"
      inkscape:window-x="0"
-     inkscape:window-y="1"
-     inkscape:window-maximized="1"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
      width="576px"
      showguides="true"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
     <sodipodi:guide
        orientation="0,1"
        position="0,48"
-       id="guide3053" />
+       id="guide3053"
+       inkscape:locked="false" />
     <sodipodi:guide
        orientation="0,1"
        position="0,528"
-       id="guide3055" />
+       id="guide3055"
+       inkscape:locked="false" />
     <sodipodi:guide
        orientation="1,0"
        position="48,0"
-       id="guide3057" />
+       id="guide3057"
+       inkscape:locked="false" />
     <sodipodi:guide
        orientation="1,0"
        position="538.91264,659.77695"
-       id="guide3059" />
+       id="guide3059"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -581,14 +595,14 @@
      style="display:inline;opacity:1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:144px;line-height:125%;font-family:TSCu_Comic;-inkscape-font-specification:TSCu_Comic;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:TSCu_Comic;-inkscape-font-specification:TSCu_Comic;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
        x="184.94424"
        y="336.00558"
-       id="text3106"
-       sodipodi:linespacing="125%"><tspan
+       id="text3106"><tspan
          sodipodi:role="line"
          id="tspan3110"
          x="184.94424"
-         y="336.00558">ND</tspan></text>
+         y="336.00558"
+         style="font-size:144px;line-height:1.25">ND</tspan></text>
   </g>
 </svg>
