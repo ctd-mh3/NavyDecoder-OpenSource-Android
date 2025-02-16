@@ -135,6 +135,9 @@ public class NavyReference extends AppCompatActivity {
     View view = mBinding.getRoot();
     setContentView(view);
 
+    // Set Title Bar Title to official app name
+    getSupportActionBar().setTitle(R.string.app_name);
+
     // Setup all the spinners
     setupSpinner(new MainDecoderItemSelectedListener());
     setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, (new IMSCodes()).getKeys(), new SecondaryDecoderItemSelectedListener());
