@@ -27,8 +27,8 @@ android {
     defaultConfig {
         applicationId "com.crashtestdummylimited.navydecoder"
         minSdkVersion 26
-        compileSdk 35
-        targetSdkVersion 35
+        compileSdk 36
+        targetSdkVersion 36
     }
 
     buildFeatures {
@@ -71,7 +71,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation "androidx.preference:preference:1.2.1"
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.browser:browser:1.8.0'
     implementation 'androidx.media:media:1.7.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
