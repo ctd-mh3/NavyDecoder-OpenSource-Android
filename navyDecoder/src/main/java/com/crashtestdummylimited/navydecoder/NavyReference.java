@@ -36,18 +36,27 @@ import com.crashtestdummylimited.navydecoder.model.RatingCodes;
 import com.crashtestdummylimited.navydecoder.model.ReferenceData;
 import com.crashtestdummylimited.navydecoder.model.ReserveProgramCodes;
 import com.crashtestdummylimited.navydecoder.model.SSPCodes;
-import com.crashtestdummylimited.navydecoder.ui.AppRater;
+import com.crashtestdummylimited.navydecoder.BuildConfig;
 import com.crashtestdummylimited.navydecoder.util.ChangelogBuilder;
 import com.crashtestdummylimited.navydecoder.util.CommonUtilities;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -68,6 +77,15 @@ public class NavyReference extends AppCompatActivity {
    * Key for latest version code preference.
    */
   private static final String LAST_VERSION_CODE_KEY = "last_version_code";
+
+  // For Play Store In-App Review
+  private static final String REVIEW_PREFS = "review_prefs";
+  private static final String KEY_FIRST_LAUNCH_MS = "first_launch_ms";
+  private static final String KEY_LAST_PROMPT_MS  = "last_prompt_ms";
+  private static final long MIN_INSTALL_AGE_MS = 3L * 24L * 60L * 60L * 1000L; // 3 days
+  private static final long COOLDOWN_MS        = 7L * 24L * 60L * 60L * 1000L; // 7 days
+
+  private ReviewManager mReviewManager;
 
   private ReferenceData mReferenceData;
   private RFASReferenceData mRfasReferenceData;
@@ -135,6 +153,10 @@ public class NavyReference extends AppCompatActivity {
     // edge-to-edge by default, which causes content to draw behind the action bar.
     WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
+    if (!BuildConfig.DEBUG) {
+      mReviewManager = ReviewManagerFactory.create(this);
+    }
+
     setTheme(R.style.ApplicationTheme);
 
     mBinding = MainScreenBinding.inflate(getLayoutInflater());
@@ -149,11 +171,9 @@ public class NavyReference extends AppCompatActivity {
     setupSpinnerFromArray(mBinding.secondaryDecodeSpinner, (new IMSCodes()).getKeys(), new SecondaryDecoderItemSelectedListener());
 
     // For debugging
-    //AppRater.showRateDialog(this, null);
     //showChangelog();
 
-    // For production
-    AppRater.app_launched(this);
+    tryRequestReviewIfAppropriate();
 
     /* show changelog */
     if (isUpdate()) {
@@ -365,6 +385,59 @@ public class NavyReference extends AppCompatActivity {
 
       dialogInterface.dismiss();
     }).show();
+  }
+
+  public void tryRequestReviewIfAppropriate() {
+    // In debug builds show a plain dialog to confirm the prompt fires at the right
+    // time. FakeReviewManager completes silently without any visible UI, so it is
+    // not useful for manual timing verification.
+    if (BuildConfig.DEBUG) {
+      new Handler(Looper.getMainLooper()).postDelayed(() -> {
+        if (isFinishing()) return;
+        new AlertDialog.Builder(this)
+            .setTitle("[Debug] Review Prompt")
+            .setMessage("In a production build the Play Store review dialog appears here.")
+            .setPositiveButton("OK", null)
+            .show();
+      }, 500);
+      return;
+    }
+
+    SharedPreferences prefs = getSharedPreferences(REVIEW_PREFS, Context.MODE_PRIVATE);
+    long now = System.currentTimeMillis();
+
+    // Record first launch timestamp; don't prompt on the very first run.
+    long firstLaunch = prefs.getLong(KEY_FIRST_LAUNCH_MS, 0L);
+    if (firstLaunch == 0L) {
+      prefs.edit().putLong(KEY_FIRST_LAUNCH_MS, now).apply();
+      return;
+    }
+
+    // Enforce minimum install age before ever prompting.
+    if (now - firstLaunch < MIN_INSTALL_AGE_MS) return;
+
+    // Enforce cooldown between prompts.
+    long lastPrompt = prefs.getLong(KEY_LAST_PROMPT_MS, 0L);
+    if (now - lastPrompt < COOLDOWN_MS) return;
+
+    // Record this attempt before launching to prevent repeated prompts if Play
+    // suppresses the dialog without showing it.
+    prefs.edit().putLong(KEY_LAST_PROMPT_MS, now).apply();
+
+    promptInAppReview();
+  }
+
+  private void promptInAppReview() {
+    Task<ReviewInfo> request = mReviewManager.requestReviewFlow();
+    request.addOnCompleteListener(requestTask -> {
+      if (isFinishing()) return;
+      if (requestTask.isSuccessful()) {
+        ReviewInfo reviewInfo = requestTask.getResult();
+        mReviewManager.launchReviewFlow(this, reviewInfo);
+        // The API does not indicate whether the dialog was shown or a review
+        // was submitted. Continue app flow regardless of the outcome.
+      }
+    });
   }
 
 }

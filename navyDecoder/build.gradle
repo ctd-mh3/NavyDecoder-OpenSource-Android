@@ -33,6 +33,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 
     buildTypes {
@@ -76,6 +77,7 @@ dependencies {
     implementation 'androidx.media:media:1.7.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     // To remove errors: https://stackoverflow.com/questions/42374151/all-com-android-support-libraries-must-use-the-exact-same-version-specification/42374426#42374426
+    implementation 'com.google.android.play:review:2.0.2'
 }
 
 // To fix issue per https://stackoverflow.com/questions/75274720/a-failure-occurred-while-executing-appcheckdebugduplicateclasses/75315276#75315276
