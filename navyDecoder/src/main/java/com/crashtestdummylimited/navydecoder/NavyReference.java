@@ -46,6 +46,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 import androidx.preference.PreferenceManager;
 
 import android.widget.AdapterView;
@@ -128,6 +129,11 @@ public class NavyReference extends AppCompatActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    // Restore traditional layout behavior where the system insets content
+    // below the action bar. Required because targeting SDK 35+ enables
+    // edge-to-edge by default, which causes content to draw behind the action bar.
+    WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
     setTheme(R.style.ApplicationTheme);
 
