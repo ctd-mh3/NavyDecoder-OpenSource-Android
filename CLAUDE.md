@@ -48,9 +48,17 @@ Implementations store data as hardcoded `String[][] CODE_MEANING_DATA` arrays lo
 
 ### Adding a New Code Type
 
-1. Create a new class in `model/` implementing `ReferenceData` (or `RFASReferenceData`).
-2. Add a case to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemSelected()`.
+**For standard (non-RFAS) types:**
+
+1. Create a new class in `model/` implementing `ReferenceData`.
+2. Add a `case` to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemSelected()`, following the `NON_RFAS` pattern (set `mReferenceData`, call `setupSpinnerFromArray` with `SecondaryDecoderItemSelectedListener`).
 3. Add the display name to `res/values/strings.xml` → `level0_list_array`.
+
+**Important**: The switch matches on the **display string directly** (e.g., `case "My New Codes":`). The string added to `level0_list_array` must be an exact character-for-character match to the switch case label.
+
+**For RFAS types:**
+
+Follow the same steps but implement `RFASReferenceData`, use `Layouts.RFAS` in `updateLayoutDueToMainDecoderItemSelection`, assign to `mRfasReferenceData`, and call `setupSpinnerFromArray` three times (for `rfasFirstCharacter`, `rfasSecondAndThirdCharacter`, `rfasFourthCharacter`) with `RFASDecoderItemSelectedListener`.
 
 ### Versioning
 
@@ -65,3 +73,7 @@ Implementations store data as hardcoded `String[][] CODE_MEANING_DATA` arrays lo
 - **Java**: 11 source/target compatibility
 - **View Binding** is enabled; layouts are accessed via `mBinding` in the activity.
 - Release builds use R8 with `proguard-android-optimize.txt` + `proguard-rules.pro`.
+
+## Reference Data
+
+The `reference/` directory at the repo root contains the original Navy source documents and data processing notes used to populate the model classes. This is useful context when updating code data.
