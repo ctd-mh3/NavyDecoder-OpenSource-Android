@@ -29,22 +29,22 @@ public class OfficerPaygradeCodes implements ReferenceData {
 
   public OfficerPaygradeCodes() {
     String[][] CODE_MEANING_DATA = {
-        {"A", "Fleet Admiral (011 FADM)"},
-        {"B", "Admiral (010 ADM)"},
-        {"C", "Vice Admiral (09 VADM)"},
-        {"D", "Rear Admiral (08 RADM)"},
-        {"E", "Rear Admiral (Lower Half) (07 RDML)"},
-        {"G", "Captain (06 CAPT)"},
-        {"H", "Commander (05 CDR)"},
-        {"I", "Lieutenant Commander (04 LCDR)"},
-        {"J", "Lieutenant (03 LT)"},
-        {"K", "Lieutenant (Junior Grade) (02 LTJG)"},
-        {"L", "Ensign (01 ENS)"},
-        {"R", "Chief Warrant Officer-5 (W5 CWO5)"},
-        {"M", "Chief Warrant Officer-4 (W4 CWO4)"},
-        {"N", "Chief Warrant Officer-3 (W3 CWO3)"},
-        {"O", "Chief Warrant Officer-2 (W2 CWO2)"},
-        {"P", "Warrant Officer-1 (W1 WO1)"}
+      {"A", "Fleet Admiral (011 FADM)"},
+      {"B", "Admiral (010 ADM)"},
+      {"C", "Vice Admiral (09 VADM)"},
+      {"D", "Rear Admiral (08 RADM)"},
+      {"E", "Rear Admiral (Lower Half) (07 RDML)"},
+      {"G", "Captain (06 CAPT)"},
+      {"H", "Commander (05 CDR)"},
+      {"I", "Lieutenant Commander (04 LCDR)"},
+      {"J", "Lieutenant (03 LT)"},
+      {"K", "Lieutenant (Junior Grade) (02 LTJG)"},
+      {"L", "Ensign (01 ENS)"},
+      {"R", "Chief Warrant Officer-5 (W5 CWO5)"},
+      {"M", "Chief Warrant Officer-4 (W4 CWO4)"},
+      {"N", "Chief Warrant Officer-3 (W3 CWO3)"},
+      {"O", "Chief Warrant Officer-2 (W2 CWO2)"},
+      {"P", "Warrant Officer-1 (W1 WO1)"}
     };
     mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
 
@@ -68,7 +68,7 @@ public class OfficerPaygradeCodes implements ReferenceData {
   @Override
   public String[] getKeys() {
 
-    //TO-DO:  All of this is likely not needed.  We know the # of keys so
+    // TO-DO:  All of this is likely not needed.  We know the # of keys so
     //        we should just be able to create a static array of that
     //        size and then copy the keys over as we iterator through them
     Iterator<String> iterator = mCodesHashMap.keySet().iterator();
@@ -96,5 +96,4 @@ public class OfficerPaygradeCodes implements ReferenceData {
 
     return returnValue;
   }
-
 }

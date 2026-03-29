@@ -18,23 +18,17 @@
  */
 package com.crashtestdummylimited.navydecoder.util;
 
+import android.content.Context;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-import android.content.Context;
-
-/**
- * Utility implementation for loading data which is pre-packages in the app.
- */
+/** Utility implementation for loading data which is pre-packages in the app. */
 final class DataLoader {
-  /**
-   * Private constructor.
-   */
-  private DataLoader() {
-  }
+  /** Private constructor. */
+  private DataLoader() {}
 
   /**
    * reads the specified file and returns its content as a String.
@@ -47,9 +41,10 @@ final class DataLoader {
       throws IOException {
 
     if (resourceIdentifier != 0) {
-      InputStream inputStream = context.getApplicationContext().getResources()
-          .openRawResource(resourceIdentifier);
-      BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+      InputStream inputStream =
+          context.getApplicationContext().getResources().openRawResource(resourceIdentifier);
+      BufferedReader reader =
+          new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
       String line;
       StringBuilder data = new StringBuilder();
 

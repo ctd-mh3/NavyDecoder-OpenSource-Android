@@ -30,17 +30,17 @@ public class RBSCBilletCodes implements ReferenceData {
   // 26JUN2020: latest RPM does not mention RBSC codes.
   public RBSCBilletCodes() {
     String[][] CODE_MEANING_DATA = {
-        {"A", "Billet advertising in APPLY, JOAPPLY or CMS-ID"},
-        {"C", "Commanding Officer (Operational Unit)"},
-        {"K", "Commanding Officer (Readiness Unit)"},
-        {"O", "Officer In Charge (Operational Unit)"},
-        {"N", "Officer In Charge (Readiness Unit)"},
-        {"X", "Executive Officer"},
-        {"P", "Post Command"},
-        {"E", "BUMED Senior Executive"},
-        {"S", "Senior Enlisted Leader (E7-E9)"},
-        {"M", "Milestone"},
-        {"Z", "Billet suppressed from advertisement in APPLY, JOAPPLY or CMS-ID"}
+      {"A", "Billet advertising in APPLY, JOAPPLY or CMS-ID"},
+      {"C", "Commanding Officer (Operational Unit)"},
+      {"K", "Commanding Officer (Readiness Unit)"},
+      {"O", "Officer In Charge (Operational Unit)"},
+      {"N", "Officer In Charge (Readiness Unit)"},
+      {"X", "Executive Officer"},
+      {"P", "Post Command"},
+      {"E", "BUMED Senior Executive"},
+      {"S", "Senior Enlisted Leader (E7-E9)"},
+      {"M", "Milestone"},
+      {"Z", "Billet suppressed from advertisement in APPLY, JOAPPLY or CMS-ID"}
     };
     mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
 
@@ -64,7 +64,7 @@ public class RBSCBilletCodes implements ReferenceData {
   @Override
   public String[] getKeys() {
 
-    //TO-DO:  All of this is likely not needed.  We know the # of keys so
+    // TO-DO:  All of this is likely not needed.  We know the # of keys so
     //        we should just be able to create a static array of that
     //        size and then copy the keys over as we iterator through them
     Iterator<String> iterator = mCodesHashMap.keySet().iterator();
@@ -92,5 +92,4 @@ public class RBSCBilletCodes implements ReferenceData {
 
     return returnValue;
   }
-
 }

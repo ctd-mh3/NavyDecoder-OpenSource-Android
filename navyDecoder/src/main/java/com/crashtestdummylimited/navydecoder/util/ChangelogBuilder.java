@@ -18,9 +18,6 @@
  */
 package com.crashtestdummylimited.navydecoder.util;
 
-import java.io.IOException;
-import java.util.Objects;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -28,29 +25,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
-
 import com.crashtestdummylimited.navydecoder.R;
+import java.io.IOException;
+import java.util.Objects;
 
-/**
- * Changelog builder to create the changelog screen.
- */
+/** Changelog builder to create the changelog screen. */
 public final class ChangelogBuilder {
-  /**
-   * LOG Constant.
-   **/
+  /** LOG Constant. */
   private static final String TAG = "ChangelogBuilder";
 
-  /**
-   * Private constructor.
-   */
-  private ChangelogBuilder() {
-  }
+  /** Private constructor. */
+  private ChangelogBuilder() {}
 
   /**
-   * Show the dialog only if not already shown for this version of the
-   * application.
+   * Show the dialog only if not already shown for this version of the application.
    *
-   * @param context  the context
+   * @param context the context
    * @param listener the listener to be set for the clickevent of the 'OK' button
    * @return the 'Changelog' dialog
    */
@@ -60,16 +50,24 @@ public final class ChangelogBuilder {
     WebView webView = view.findViewById(R.id.changelogcontent);
 
     try {
-      webView.loadData(Objects.requireNonNull(DataLoader.loadData(context, R.raw.changelog)), "text/html", "UTF-8");
+      webView.loadData(
+          Objects.requireNonNull(DataLoader.loadData(context, R.raw.changelog)),
+          "text/html",
+          "UTF-8");
     } catch (IOException ioe) {
       Log.e(TAG, "Error reading changelog file!", ioe);
     }
 
     return new AlertDialog.Builder(context)
         .setTitle(
-            context.getString(R.string.changelog_title) + "\n"
-                + context.getString(R.string.app_name) + " v"
-                + CommonUtilities.getActualVersionName(context)).setIcon(R.mipmap.ic_launcher)
-        .setView(view).setPositiveButton(android.R.string.ok, listener).create();
+            context.getString(R.string.changelog_title)
+                + "\n"
+                + context.getString(R.string.app_name)
+                + " v"
+                + CommonUtilities.getActualVersionName(context))
+        .setIcon(R.mipmap.ic_launcher)
+        .setView(view)
+        .setPositiveButton(android.R.string.ok, listener)
+        .create();
   }
 }
