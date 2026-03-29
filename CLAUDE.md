@@ -18,6 +18,12 @@ Navy Decoder is an Android application (Java, single-module Gradle project) that
 # Run lint
 ./gradlew :navyDecoder:lint
 
+# Check code formatting (Spotless)
+./gradlew :navyDecoder:spotlessCheck
+
+# Auto-fix code formatting (Spotless)
+./gradlew :navyDecoder:spotlessApply
+
 # Clean build
 ./gradlew clean
 ```

@@ -33,49 +33,67 @@ public class MASCodes implements ReferenceData {
 
   public MASCodes() {
     String[][] CODE_MEANING_DATA = {
-        {"MS1", "Line of Duty initiated."},
-        {"MS2", "Medical Retention Review (MRR) initiated."},
-        {"MS3", "Temporarily Not Physically Qualified (TNPQ)."},
-        {"MPQ", "Not qualified for retention."},
-        {"MSR", "MRR periodic resubmission."},
-        {"MPC", "Pregnant."},
-        {"MPP", "Non-deployable mother, child less than 12 months old or postpartum convalescence."},
-        {"MP1", "MRR submitted that receives Physically Qualified-Mob Limited."},
-        {"MNN", "MRR submitted that receives Not Physically Qualified/Retention Recommended (NPQ/RR)."},
-        {"MDF", "Dental Class IV (does not preclude mobilization)."},
-        {"MDT", "Dental Class III (does not preclude mobilization)."},
-        {"AKE", "Key Federal Employee."},
-        {"AUP", "Unsatisfactory participant."},
-        {"AAP", "Administrative action pending which would preclude mobilization."},
-        {"APB", "Enlisted probationary drill status (UNSAT)."},
-        {"ARR", "Retirement request submitted, pending PERS-9 approval/approved retirement request."},
-        {"ACB", "Member not selected for continuation."},
-        {"AS2", "Member is within six months of HYT or statutory attrition."},
-        {"ACR", "Member has a ending/approved conditional release from Navy Reserve."},
-        {"ASF", "Member is ineligible for Force Protection duties."},
-        {"MPT", "Member failed most recent PFA."},
-        {"TS1", "Active Duty/FTS member who affiliated within 0-183 days of release from Active Component (24-month deferment from involuntary mobilization)."},
-        {"AS1", "Active Duty/FTS member who affiliated within 184-365 days of release from Active Component (12-month deferment from involuntary mobilization)."},
-        {"AFP", "Security Clearance issue. Joint Personnel Adjudication System (JPAS) records indicate derogatory eligibility determination."},
-        {"ASP", "Member is a single parent or guardian and requires a family care plan."},
-        {"ASD", "Member has an Active/Reserve military spouse and requires a family care plan."},
-        {"AS3", "Member is a non-custodial single parent who does not require a family care plan."},
-        {"ASO", "Sole surviving son or daughter. May restrict mobilization locations."},
-        {"SAD", "Approaching sanctuary. Member has 16 years or more of Active Duty."},
-        {"DAP", "Pending ADSEP, package submitted."},
-        {"TMS", "Attending authorized medical/dental/nursing school."},
-        {"DCO", "CNRFC HQ USE ONLY.  Removed upon completion of Direct Commission Officer Indoctrination Course."},
-        {"TBH", "Enlisted/Officer has not completed prescribed community specific training to be considered qualified for mobilization."},
-        {"TSP", "SELRES Officer authorized early release for professional sports."},
-        {"PRO", "Health Care Professional Officer in 36-month deferment window."},
-        {"TS2", "RP assigned to USMC unit, but has not received NEC 2401."},
-        {"TIW", "Information Officer (IW) who has not completed prescribed IW training."},
-        {"TRP", "PRISE-R/designator or rate conversion training."},
-        {"OAT", "Members GTCC is suspended or revoked."},
-        {"VS1", "Member is on Definite (Temporary) Recall."},
-        {"OWS", "Member is on ADOS."},
-        {"BCG", "Member's record is frozen by PERS."},
-        {"TBX", "Member has not completed prescribed training courses."},
+      {"MS1", "Line of Duty initiated."},
+      {"MS2", "Medical Retention Review (MRR) initiated."},
+      {"MS3", "Temporarily Not Physically Qualified (TNPQ)."},
+      {"MPQ", "Not qualified for retention."},
+      {"MSR", "MRR periodic resubmission."},
+      {"MPC", "Pregnant."},
+      {"MPP", "Non-deployable mother, child less than 12 months old or postpartum convalescence."},
+      {"MP1", "MRR submitted that receives Physically Qualified-Mob Limited."},
+      {
+        "MNN",
+        "MRR submitted that receives Not Physically Qualified/Retention Recommended (NPQ/RR)."
+      },
+      {"MDF", "Dental Class IV (does not preclude mobilization)."},
+      {"MDT", "Dental Class III (does not preclude mobilization)."},
+      {"AKE", "Key Federal Employee."},
+      {"AUP", "Unsatisfactory participant."},
+      {"AAP", "Administrative action pending which would preclude mobilization."},
+      {"APB", "Enlisted probationary drill status (UNSAT)."},
+      {"ARR", "Retirement request submitted, pending PERS-9 approval/approved retirement request."},
+      {"ACB", "Member not selected for continuation."},
+      {"AS2", "Member is within six months of HYT or statutory attrition."},
+      {"ACR", "Member has a ending/approved conditional release from Navy Reserve."},
+      {"ASF", "Member is ineligible for Force Protection duties."},
+      {"MPT", "Member failed most recent PFA."},
+      {
+        "TS1",
+        "Active Duty/FTS member who affiliated within 0-183 days of release from Active Component (24-month deferment from involuntary mobilization)."
+      },
+      {
+        "AS1",
+        "Active Duty/FTS member who affiliated within 184-365 days of release from Active Component (12-month deferment from involuntary mobilization)."
+      },
+      {
+        "AFP",
+        "Security Clearance issue. Joint Personnel Adjudication System (JPAS) records indicate derogatory eligibility determination."
+      },
+      {"ASP", "Member is a single parent or guardian and requires a family care plan."},
+      {"ASD", "Member has an Active/Reserve military spouse and requires a family care plan."},
+      {"AS3", "Member is a non-custodial single parent who does not require a family care plan."},
+      {"ASO", "Sole surviving son or daughter. May restrict mobilization locations."},
+      {"SAD", "Approaching sanctuary. Member has 16 years or more of Active Duty."},
+      {"DAP", "Pending ADSEP, package submitted."},
+      {"TMS", "Attending authorized medical/dental/nursing school."},
+      {
+        "DCO",
+        "CNRFC HQ USE ONLY.  Removed upon completion of Direct Commission Officer Indoctrination Course."
+      },
+      {
+        "TBH",
+        "Enlisted/Officer has not completed prescribed community specific training to be considered qualified for mobilization."
+      },
+      {"TSP", "SELRES Officer authorized early release for professional sports."},
+      {"PRO", "Health Care Professional Officer in 36-month deferment window."},
+      {"TS2", "RP assigned to USMC unit, but has not received NEC 2401."},
+      {"TIW", "Information Officer (IW) who has not completed prescribed IW training."},
+      {"TRP", "PRISE-R/designator or rate conversion training."},
+      {"OAT", "Members GTCC is suspended or revoked."},
+      {"VS1", "Member is on Definite (Temporary) Recall."},
+      {"OWS", "Member is on ADOS."},
+      {"BCG", "Member's record is frozen by PERS."},
+      {"TBX", "Member has not completed prescribed training courses."},
     };
 
     mMASCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
@@ -100,7 +118,7 @@ public class MASCodes implements ReferenceData {
   @Override
   public String[] getKeys() {
 
-    //TO-DO:  All of this is likely not needed.  We know the # of keys so
+    // TO-DO:  All of this is likely not needed.  We know the # of keys so
     //        we should just be able to create a static array of that
     //        size and then copy the keys over as we iterator through them
     Iterator<String> iterator = mMASCodesHashMap.keySet().iterator();
@@ -128,5 +146,4 @@ public class MASCodes implements ReferenceData {
 
     return returnValue;
   }
-
 }

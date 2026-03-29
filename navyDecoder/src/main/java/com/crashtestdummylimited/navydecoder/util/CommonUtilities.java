@@ -1,4 +1,5 @@
 package com.crashtestdummylimited.navydecoder.util;
+
 /*
  * This file is part of Navy Decoder-Android.
  *
@@ -24,7 +25,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
-
 import androidx.core.content.pm.PackageInfoCompat;
 
 public class CommonUtilities {
@@ -53,8 +53,10 @@ public class CommonUtilities {
     // (incremented) in each release on the market in the
     // AndroidManifest.xml
     try {
-      return context.getPackageManager().getPackageInfo(context.getPackageName(),
-          PackageManager.GET_ACTIVITIES).versionName;
+      return context
+          .getPackageManager()
+          .getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES)
+          .versionName;
     } catch (NameNotFoundException e) {
       return null;
     }
@@ -77,5 +79,4 @@ public class CommonUtilities {
       return 0;
     }
   }
-
 }
