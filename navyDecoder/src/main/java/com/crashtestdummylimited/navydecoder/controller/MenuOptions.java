@@ -105,7 +105,7 @@ public class MenuOptions {
         // Define what your app should do if no activity can handle the intent.
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(activity);
         alertDialog2.setTitle(activity.getString(R.string.emailErrorTitle));
-        alertDialog2.setMessage(R.string.emailErrorMessage);
+        alertDialog2.setMessage(activity.getString(R.string.emailErrorMessage));
         alertDialog2.setPositiveButton("OK", (dialog, which) -> {});
         alertDialog2.show();
       }
