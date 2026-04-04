@@ -18,16 +18,21 @@
  */
 package com.crashtestdummylimited.navydecoder.util;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import com.crashtestdummylimited.navydecoder.R;
 import java.io.IOException;
-import java.util.Objects;
+import java.util.Locale;
 
 /** Changelog builder to create the changelog screen. */
 public final class ChangelogBuilder {
@@ -50,25 +55,49 @@ public final class ChangelogBuilder {
     WebView webView = view.findViewById(R.id.changelogcontent);
     webView.getSettings().setJavaScriptEnabled(false);
 
+    int bgColorInt = ContextCompat.getColor(context, R.color.changeLogBackgroundColor);
+    int textColorInt = ContextCompat.getColor(context, R.color.changeLogTextColor);
+    String bgHex = String.format(Locale.US, "#%06X", (0xFFFFFF & bgColorInt));
+    String textHex = String.format(Locale.US, "#%06X", (0xFFFFFF & textColorInt));
+    String css =
+        "<style>"
+            + "body{background-color:"
+            + bgHex
+            + ";color:"
+            + textHex
+            + ";margin:8px;padding:0;font-family:sans-serif;}"
+            + "</style>";
+
     try {
-      webView.loadData(
-          Objects.requireNonNull(DataLoader.loadData(context, R.raw.changelog)),
-          "text/html",
-          "UTF-8");
+      String rawContent = DataLoader.loadData(context, R.raw.changelog);
+      if (rawContent != null) {
+        webView.loadDataWithBaseURL(null, css + rawContent, "text/html", "UTF-8", null);
+      }
     } catch (IOException ioe) {
       Log.e(TAG, "Error reading changelog file!", ioe);
     }
 
-    return new AlertDialog.Builder(context)
-        .setTitle(
-            context.getString(R.string.changelog_title)
-                + "\n"
-                + context.getString(R.string.app_name)
-                + " v"
-                + CommonUtilities.getActualVersionName(context))
-        .setIcon(R.mipmap.ic_launcher)
-        .setView(view)
-        .setPositiveButton(android.R.string.ok, listener)
-        .create();
+    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context, R.style.ChangeDialogStyle);
+    alertDialog.setView(view);
+    alertDialog.setPositiveButton(android.R.string.ok, listener);
+
+    int hPadPx =
+        (int)
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 16, context.getResources().getDisplayMetrics());
+    int vPadPx =
+        (int)
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 14, context.getResources().getDisplayMetrics());
+    TextView titleView = new TextView(context);
+    titleView.setText(context.getString(R.string.changelog_title));
+    titleView.setGravity(Gravity.CENTER_HORIZONTAL);
+    titleView.setTextColor(ContextCompat.getColor(context, R.color.changeLogTextColor));
+    titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
+    titleView.setTypeface(null, Typeface.BOLD);
+    titleView.setPadding(hPadPx, vPadPx, hPadPx, vPadPx);
+    alertDialog.setCustomTitle(titleView);
+
+    return alertDialog.create();
   }
 }

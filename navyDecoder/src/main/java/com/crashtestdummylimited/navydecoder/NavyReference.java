@@ -203,7 +203,7 @@ public class NavyReference extends AppCompatActivity {
         new SecondaryDecoderItemSelectedListener());
 
     // For debugging
-    // showChangelog();
+    //showChangelog();
 
     tryRequestReviewIfAppropriate();
 
