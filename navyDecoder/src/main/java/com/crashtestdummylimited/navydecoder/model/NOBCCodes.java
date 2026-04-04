@@ -89,13 +89,13 @@ public class NOBCCodes implements ReferenceData {
       {"0800", "Health Care Administrator"},
       {"0808", "Patient Administrator"},
       {"0820", "Operations Management Officer, Medical Facility"},
-      {"0822", "Medical Facilities Liaison Officer"},
+      {"0822", "Health Facility Planning And Project Officer "},
       {"0840", "Biochemist"},
       {"0841", "Microbiologist"},
       {"0845", "Radiation Health Officer"},
       {"0847", "Radiation Specialist"},
       {"0848", "Physiologist"},
-      {"0849", "Aerospace Physiologist"},
+      {"0849", "Aerospace And Operational Physiologist "},
       {"0851", "Clinical Psychologist"},
       {"0852", "Aerospace Experimental Psychologist"},
       {"0854", "Research Psychologist"},
@@ -185,10 +185,8 @@ public class NOBCCodes implements ReferenceData {
       {"2365", "Staff Meteorology And Oceanography (METOC) Officer"},
       {"2410", "Intragovernmental Inquiries Officer"},
       {"2412", "Staff Public Affairs Officer"},
-      {"2415", "Historical Officer"},
       {"2425", "Visual Imagery Manager"},
       {"2430", "Press Officer"},
-      {"2445", "Radio‑Television Program Officer"},
       {"2505", "General Attorney"},
       {"2510", "Administrative Law Attorney"},
       {"2515", "Admiralty Attorney"},
@@ -266,10 +264,8 @@ public class NOBCCodes implements ReferenceData {
       {"3520", "Music Director"},
       {"3525", "Family Services Center Director"},
       {"3535", "Special Services Officer"},
-      {"3701", "Chaplain Selectee"},
       {"3710", "Chaplain"},
       {"3720", "Tactical Chaplain"},
-      {"3725", "Chaplain Specialist"},
       {"3730", "Supervisory Chaplain"},
       {"3740", "Group Chaplain"},
       {"3745", "Force Chaplain"},
@@ -331,7 +327,6 @@ public class NOBCCodes implements ReferenceData {
       {"6704", "Weapons Maintenance Officer"},
       {"6715", "Weapons Material Officer (General)"},
       {"6717", "Program Manager, Weapons Systems"},
-      {"6874", "Weapons Technical Information Officer"},
       {"6914", "Naval Plant Representative"},
       {"6920", "Weapons Design Officer"},
       {"6930", "Naval Weapons Technical Liaison Officer"},
@@ -344,6 +339,7 @@ public class NOBCCodes implements ReferenceData {
       {"6962", "Weapons Planning And Progress Officer"},
       {"6966", "Weapons Plans And Policies Director"},
       {"6968", "Weapons And Ammunition Production Officer"},
+      {"6974", "Weapons Technical Information Officer"},
       {"6978", "Weapons Repair Officer"},
       {"6980", "Weapons Research Planning Officer"},
       {"6982", "Weapons Technical Officer"},
@@ -518,8 +514,8 @@ public class NOBCCodes implements ReferenceData {
       {"9087", "Staff Plans Officer"},
       {"9088", "Submarine Element Coordinator"},
       {"9089", "Operational Logistics Planner"},
-      {"9090", "Operational Support Officer"},
-      {"9091", "Operational Support Officer Assistant"},
+      {"9090", "Reserve Program Director "},
+      {"9091", "Assistant Reserve Program Director "},
       {"9092", "Assessment Director"},
       {"9093", "Assessment Analyst"},
       {"9100", "AOC Director"},
@@ -605,6 +601,7 @@ public class NOBCCodes implements ReferenceData {
       {"9275", "Operations Officer, Afloat (Naval Tactical Data Systems)"},
       {"9278", "Ship's Boatswain"},
       {"9279", "Officer In Charge, Combat Craft"},
+      {"928A", "Division Officer, Special Warfare Team"},
       {"9282", "Ship's Electronic Warfare Officer"},
       {"9283", "Ship's Electronic Material Officer"},
       {"9284", "Ship's Navigator (General)"},
@@ -758,7 +755,6 @@ public class NOBCCodes implements ReferenceData {
       {"9981", "Naval Plans And Policies Director, Naval Command Systems"},
       {"9990", "Joint Strategic Plans And Policy Officer"},
       {"9992", "Deputy/Vice Commander"},
-      {"928A", "Division Officer, Special Warfare Team"}
     };
 
     mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
@@ -771,7 +767,7 @@ public class NOBCCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JAN 2024)";
+    return "NAVPERS 15839I VOL I (JAN 2026)";
   }
 
   @Override
