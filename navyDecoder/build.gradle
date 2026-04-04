@@ -8,7 +8,7 @@ repositories {
     mavenCentral()
 
     maven {
-        url 'https://maven.google.com'
+        url = 'https://maven.google.com'
     }
 }
 
@@ -35,7 +35,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding true
+        viewBinding = true
         buildConfig = true
     }
 
@@ -47,7 +47,7 @@ android {
 
             // Enables resource shrinking, which is performed by the
             // Android Gradle plugin.
-            shrinkResources true
+            shrinkResources = true
 
             // Includes the default ProGuard rules files that are packaged with
             // the Android Gradle plugin. To learn more, go to the section about
@@ -68,7 +68,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    namespace 'com.crashtestdummylimited.navydecoder'
+    namespace = 'com.crashtestdummylimited.navydecoder'
 }
 
 spotless {
@@ -88,7 +88,7 @@ spotless {
 }
 
 dependencies {
-    implementation "androidx.preference:preference:1.2.1"
+    implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.browser:browser:1.10.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
