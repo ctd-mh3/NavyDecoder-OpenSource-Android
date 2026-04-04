@@ -64,7 +64,7 @@ public class MenuOptions {
       AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
       alertDialog.setTitle(activity.getString(R.string.aboutTitle));
       alertDialog.setMessage(message);
-      alertDialog.setPositiveButton("OK", (dialog, which) -> {});
+      alertDialog.setPositiveButton(android.R.string.ok, (dialog, which) -> {});
       alertDialog.show();
     } else if (itemId == R.id.optionsMenuOpenSource) {
       // http://stackoverflow.com/questions/3661524/android-modal-dialog-with-changelog-for-app-shown-only-first-time-after-install
@@ -78,7 +78,7 @@ public class MenuOptions {
       AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
       alertDialog.setTitle(activity.getString(R.string.opensourceTitle));
       alertDialog.setMessage(message);
-      alertDialog.setPositiveButton("OK", (dialog, which) -> {});
+      alertDialog.setPositiveButton(android.R.string.ok, (dialog, which) -> {});
       alertDialog.show();
     } else if (itemId == R.id.optionsMenuEmailAuthor) {
       Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -106,7 +106,7 @@ public class MenuOptions {
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(activity);
         alertDialog2.setTitle(activity.getString(R.string.emailErrorTitle));
         alertDialog2.setMessage(activity.getString(R.string.emailErrorMessage));
-        alertDialog2.setPositiveButton("OK", (dialog, which) -> {});
+        alertDialog2.setPositiveButton(android.R.string.ok, (dialog, which) -> {});
         alertDialog2.show();
       }
     }

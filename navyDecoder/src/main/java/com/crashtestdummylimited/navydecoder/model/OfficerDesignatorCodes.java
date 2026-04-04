@@ -218,7 +218,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
       {"783X", "Intelligence Technician Formerly DESIG 745X"},
       {"784X", "Cyber Warrant Officer Formerly DESIG 743X"}
     };
-    mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

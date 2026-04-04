@@ -43,17 +43,17 @@ final class DataLoader {
     if (resourceIdentifier != 0) {
       InputStream inputStream =
           context.getApplicationContext().getResources().openRawResource(resourceIdentifier);
-      BufferedReader reader =
-          new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-      String line;
-      StringBuilder data = new StringBuilder();
+      try (BufferedReader reader =
+          new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+        String line;
+        StringBuilder data = new StringBuilder();
 
-      while ((line = reader.readLine()) != null) {
-        data.append(line);
+        while ((line = reader.readLine()) != null) {
+          data.append(line);
+        }
+
+        return data.toString();
       }
-
-      reader.close();
-      return data.toString();
     }
 
     return null;

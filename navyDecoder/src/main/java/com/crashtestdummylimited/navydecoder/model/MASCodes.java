@@ -96,7 +96,7 @@ public class MASCodes implements ReferenceData {
       {"TBX", "Member has not completed prescribed training courses."},
     };
 
-    mMASCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mMASCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mMASCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

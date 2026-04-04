@@ -184,7 +184,7 @@ public class NRACodes implements ReferenceData {
       {"6802", "VP-62, FL"},
       {"6666", "NAF WASHINGTON, DC"}
     };
-    mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

@@ -129,7 +129,7 @@ public class RatingCodes implements ReferenceData {
       {"YN", "Yeoman"},
       {"YNS", "Yeoman (Submarine)"}
     };
-    mCodesHashMap = new HashMap<>(mCodeData.length);
+    mCodesHashMap = new HashMap<>((int) (mCodeData.length / 0.75) + 1);
 
     for (String[] aMCodeData : mCodeData) {
       mCodesHashMap.put(aMCodeData[0], aMCodeData[1]);

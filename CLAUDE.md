@@ -39,7 +39,6 @@ Single `Activity` (`NavyReference.java`) with no Fragments. The app uses a two-l
 - `com.crashtestdummylimited.navydecoder` — Main activity (`NavyReference.java`)
 - `com.crashtestdummylimited.navydecoder.model` — All code data and interfaces
 - `com.crashtestdummylimited.navydecoder.controller` — `MenuOptions.java` (About, Open Source, Email Author menu items)
-- `com.crashtestdummylimited.navydecoder.ui` — `AppRater.java` (rate-the-app dialog)
 - `com.crashtestdummylimited.navydecoder.util` — `DataLoader.java`, `ChangelogBuilder.java`, `CommonUtilities.java`
 
 ### Data Model Pattern
@@ -60,7 +59,7 @@ Implementations store data as hardcoded `String[][] CODE_MEANING_DATA` arrays lo
 2. Add a `case` to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemSelected()`, following the `NON_RFAS` pattern (set `mReferenceData`, call `setupSpinnerFromArray` with `SecondaryDecoderItemSelectedListener`).
 3. Add the display name to `res/values/strings.xml` → `level0_list_array`.
 
-**Important**: The switch matches on the **display string directly** (e.g., `case "My New Codes":`). The string added to `level0_list_array` must be an exact character-for-character match to the switch case label.
+**Important**: The switch matches on the **position index** (`pos`) of the item in `level0_list_array`. When adding a new entry, append it to the end of the array and add a new `case` with the next index. Do not reorder existing entries without updating the corresponding case numbers.
 
 **For RFAS types:**
 
@@ -68,7 +67,7 @@ Follow the same steps but implement `RFASReferenceData`, use `Layouts.RFAS` in `
 
 ### Versioning
 
-- `versionCode` and `versionName` are set in `navyDecoder/src/main/AndroidManifest.xml`.
+- `versionCode` and `versionName` are set in `navyDecoder/build.gradle` → `defaultConfig`.
 - The changelog is an HTML file at `navyDecoder/src/main/res/raw/changelog.html`.
 - On first launch after an upgrade, the changelog dialog is automatically shown.
 

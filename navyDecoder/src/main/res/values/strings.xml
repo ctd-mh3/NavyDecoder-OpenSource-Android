@@ -29,8 +29,6 @@
   <string name="emailErrorTitle">Email Error</string>
   <string name="emailErrorMessage">Your device has no email application installed.</string>
 
-  <!-- Rate Request Information -->
-
   <!-- Change Log Dialog Information -->
   <string name="changelog_title">Changelog:</string>
 
@@ -52,8 +50,7 @@
   <string name="sourceDescription">Source of Data:</string>
 
 
-  <!--  Level 0 Menu List -->
-  <!--  WARNING-  Do not change these strings w/o also changing NavyReference.java -->
+  <!--  Level 0 Menu List - order must match the position indices in NavyReference.java -->
   <string-array name="level0_list_array">
     <item>Enlisted Rating Codes</item>
     <item>IMS Codes</item>
@@ -68,13 +65,6 @@
     <item>Reserve Unit Identification Codes</item>
     <item>RFAS-Enlisted Codes</item>
     <item>RFAS-Officer Codes</item>
-    <item>Subspeciality Codes</item>
+    <item>Subspecialty Codes</item>
   </string-array>
-  <!--
-     <string-array name="level0_list_array">
-          <item>AQD Codes</item>
-          <item>NECs</item>
-          <item>OSD Codes</item>
-      </string-array>
-  -->
 </resources>
