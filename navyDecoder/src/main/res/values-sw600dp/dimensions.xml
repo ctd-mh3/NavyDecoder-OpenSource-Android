@@ -15,9 +15,4 @@
 
   <dimen name="decodeDescription_textSize">25sp</dimen>
 
-  <dimen name="listItem_textSize">25sp</dimen>
-
-  <dimen name="RateDialogHeader_textSize">35sp</dimen>
-  <dimen name="RateDialogButton_marginTop">20sp</dimen>
-
 </resources>

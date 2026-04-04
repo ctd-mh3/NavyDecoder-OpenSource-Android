@@ -30,11 +30,6 @@
   <string name="emailErrorMessage">Your device has no email application installed.</string>
 
   <!-- Rate Request Information -->
-  <string name="rateTitle">Rate Navy Decoder</string>
-  <string name="rateRequest">If you enjoy using this app, please take a moment to rate it. Your support is appreciated!</string>
-  <string name="rateRateButton">Rate This App</string>
-  <string name="rateLaterButton">Remind Me Later</string>
-  <string name="rateNoThanksButton">No, Thanks</string>
 
   <!-- Change Log Dialog Information -->
   <string name="changelog_title">Changelog:</string>
