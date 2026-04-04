@@ -1,74 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:orientation="vertical">
-
-  <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-      style="@style/MainDescription"
-      android:text="@string/topLevelDescription" />
+  <!--
+    Toolbar replaces the legacy AppCompat ActionBar so that we own its
+    position in the view tree and can apply the status-bar inset directly
+    as paddingTop. This is the reliable fix for Android 15+ edge-to-edge
+    enforcement, where the legacy ActionBarOverlayLayout approach does not
+    consistently honour insets.
+  -->
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="?attr/colorPrimary"
+      android:minHeight="?attr/actionBarSize"
+      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+      app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <TextView
-      style="@style/MainDecodeDescription"
-      android:text="@string/mainDecodeDescription" />
+  <ScrollView
+      android:id="@+id/mainScrollView"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:clipToPadding="false"
+      android:orientation="vertical">
 
-    <Spinner
-      android:id="@+id/mainDecodeSpinner"
-      style="@style/MainDecodeSpinner"
-      android:prompt="@string/mainDecodePrompt" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-      style="@style/MainDecodeDescription"
-      android:text="@string/secondaryDecodeDescription" />
+      <TextView
+          style="@style/MainDescription"
+          android:text="@string/topLevelDescription" />
 
-    <Spinner
-      android:id="@+id/secondaryDecodeSpinner"
-      style="@style/MainDecodeSpinner"
-      android:prompt="@string/secondaryDecodePrompt" />
-
-    <RelativeLayout
-      android:id="@+id/rfasSpinnerLayout"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content">
+      <TextView
+          style="@style/MainDecodeDescription"
+          android:text="@string/mainDecodeDescription" />
 
       <Spinner
-        android:id="@+id/rfasFirstCharacter"
-        style="@style/MainDecodeSpinner"
-        android:prompt="@string/rfasFirstCharacterPrompt" />
+          android:id="@+id/mainDecodeSpinner"
+          style="@style/MainDecodeSpinner"
+          android:prompt="@string/mainDecodePrompt" />
+
+      <TextView
+          style="@style/MainDecodeDescription"
+          android:text="@string/secondaryDecodeDescription" />
 
       <Spinner
-        android:id="@+id/rfasSecondAndThirdCharacter"
-        style="@style/MainDecodeSpinner"
-        android:layout_toEndOf="@id/rfasFirstCharacter"
-        android:prompt="@string/rfasSecondAndThirdCharactersPrompt" />
+          android:id="@+id/secondaryDecodeSpinner"
+          style="@style/MainDecodeSpinner"
+          android:prompt="@string/secondaryDecodePrompt" />
 
-      <Spinner
-        android:id="@+id/rfasFourthCharacter"
-        style="@style/MainDecodeSpinner"
-        android:layout_toEndOf="@id/rfasSecondAndThirdCharacter"
-        android:prompt="@string/rfasFourthCharactersPrompt" />
+      <RelativeLayout
+          android:id="@+id/rfasSpinnerLayout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
 
-    </RelativeLayout>
+        <Spinner
+            android:id="@+id/rfasFirstCharacter"
+            style="@style/MainDecodeSpinner"
+            android:prompt="@string/rfasFirstCharacterPrompt" />
 
-    <TextView
-      style="@style/MainDecodeDescription"
-      android:text="@string/decodeDescription" />
+        <Spinner
+            android:id="@+id/rfasSecondAndThirdCharacter"
+            style="@style/MainDecodeSpinner"
+            android:layout_toEndOf="@id/rfasFirstCharacter"
+            android:prompt="@string/rfasSecondAndThirdCharactersPrompt" />
 
-    <TextView
-      android:id="@+id/decodeDescription"
-      style="@style/DecodeDescription" />
+        <Spinner
+            android:id="@+id/rfasFourthCharacter"
+            style="@style/MainDecodeSpinner"
+            android:layout_toEndOf="@id/rfasSecondAndThirdCharacter"
+            android:prompt="@string/rfasFourthCharactersPrompt" />
 
-    <TextView
-      style="@style/MainDecodeDescription"
-      android:text="@string/sourceDescription" />
+      </RelativeLayout>
 
-    <TextView
-      android:id="@+id/sourceDescription"
-      style="@style/DecodeDescription" />
-  </LinearLayout>
-</ScrollView>
+      <TextView
+          style="@style/MainDecodeDescription"
+          android:text="@string/decodeDescription" />
+
+      <TextView
+          android:id="@+id/decodeDescription"
+          style="@style/DecodeDescription" />
+
+      <TextView
+          style="@style/MainDecodeDescription"
+          android:text="@string/sourceDescription" />
+
+      <TextView
+          android:id="@+id/sourceDescription"
+          style="@style/DecodeDescription" />
+
+    </LinearLayout>
+  </ScrollView>
+
+</LinearLayout>

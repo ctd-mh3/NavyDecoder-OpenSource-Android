@@ -34,7 +34,9 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.preference.PreferenceManager;
 import com.crashtestdummylimited.navydecoder.controller.MenuOptions;
 import com.crashtestdummylimited.navydecoder.databinding.MainScreenBinding;
@@ -139,11 +141,6 @@ public class NavyReference extends AppCompatActivity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    // Restore traditional layout behavior where the system insets content
-    // below the action bar. Required because targeting SDK 35+ enables
-    // edge-to-edge by default, which causes content to draw behind the action bar.
-    WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
-
     if (!BuildConfig.DEBUG) {
       mReviewManager = ReviewManagerFactory.create(this);
     }
@@ -153,6 +150,29 @@ public class NavyReference extends AppCompatActivity {
     mBinding = MainScreenBinding.inflate(getLayoutInflater());
     View view = mBinding.getRoot();
     setContentView(view);
+
+    // The Toolbar lives in our own layout, so we own its insets directly.
+    // Pad its top by the status-bar height so it sits below the status bar on
+    // Android 15+ edge-to-edge. The Toolbar background colour fills that space,
+    // giving the appearance of a coloured status bar.
+    ViewCompat.setOnApplyWindowInsetsListener(
+        mBinding.toolbar,
+        (v, windowInsets) -> {
+          Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+          v.setPadding(0, insets.top, 0, 0);
+          return windowInsets;
+        });
+
+    // Pad the scroll view bottom so content isn't hidden behind the nav bar.
+    ViewCompat.setOnApplyWindowInsetsListener(
+        mBinding.mainScrollView,
+        (v, windowInsets) -> {
+          Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+          v.setPadding(0, 0, 0, insets.bottom);
+          return WindowInsetsCompat.CONSUMED;
+        });
+
+    setSupportActionBar(mBinding.toolbar);
 
     // Set Title Bar Title to official app name
     getSupportActionBar().setTitle(R.string.app_name);
