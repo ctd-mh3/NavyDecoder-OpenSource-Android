@@ -27,6 +27,8 @@ android {
 
     defaultConfig {
         applicationId "com.crashtestdummylimited.navydecoder"
+        versionCode 62
+        versionName "1.60"
         minSdkVersion 26
         compileSdkVersion 36
         targetSdkVersion 36
@@ -86,14 +88,10 @@ spotless {
 }
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
     implementation "androidx.preference:preference:1.2.1"
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.browser:browser:1.10.0'
-    implementation 'androidx.media:media:1.7.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    // To remove errors: https://stackoverflow.com/questions/42374151/all-com-android-support-libraries-must-use-the-exact-same-version-specification/42374426#42374426
     implementation 'com.google.android.play:review:2.0.2'
 }
 

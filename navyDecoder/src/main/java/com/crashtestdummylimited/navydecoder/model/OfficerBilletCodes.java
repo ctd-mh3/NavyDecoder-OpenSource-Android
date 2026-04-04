@@ -412,7 +412,7 @@ public class OfficerBilletCodes implements ReferenceData {
       {"7840", "Warrant Officer (Line) billet requiring supervision in Cyber Warfare specialty"}
     };
 
-    mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

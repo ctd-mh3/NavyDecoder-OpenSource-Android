@@ -48,6 +48,7 @@ public final class ChangelogBuilder {
 
     final View view = LayoutInflater.from(context).inflate(R.layout.changelog, null);
     WebView webView = view.findViewById(R.id.changelogcontent);
+    webView.getSettings().setJavaScriptEnabled(false);
 
     try {
       webView.loadData(

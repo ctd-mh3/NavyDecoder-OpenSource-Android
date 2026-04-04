@@ -244,7 +244,7 @@ public class SSPCodes implements ReferenceData {
       {"1980", "Women's Health Nurse Practitioner"},
       {"1981", "Nurse Midwife"},
     };
-    mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

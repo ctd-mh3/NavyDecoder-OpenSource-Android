@@ -58,7 +58,7 @@ public class CommonUtilities {
           .getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES)
           .versionName;
     } catch (NameNotFoundException e) {
-      return null;
+      return "Unknown";
     }
   }
 

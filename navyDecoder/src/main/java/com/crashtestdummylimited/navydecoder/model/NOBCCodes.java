@@ -757,7 +757,7 @@ public class NOBCCodes implements ReferenceData {
       {"9992", "Deputy/Vice Commander"},
     };
 
-    mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

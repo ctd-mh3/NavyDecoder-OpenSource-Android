@@ -46,7 +46,7 @@ public class OfficerPaygradeCodes implements ReferenceData {
       {"O", "Chief Warrant Officer-2 (W2 CWO2)"},
       {"P", "Warrant Officer-1 (W1 WO1)"}
     };
-    mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);

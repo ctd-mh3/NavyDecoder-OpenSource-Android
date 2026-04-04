@@ -44,7 +44,8 @@ public class RFASEnlistedCodes implements RFASReferenceData {
       {"3", "E1 through E3 - (E1, E2, E3, E4 Authorized Rating)"},
       {"N", "E1 through E6 meeting horizontal AB or BB RFAS"}
     };
-    mFirstCharacterCodesHashMap = new HashMap<>(FIRST_CHAR_CODE_MEANING_DATA.length);
+    mFirstCharacterCodesHashMap =
+        new HashMap<>((int) (FIRST_CHAR_CODE_MEANING_DATA.length / 0.75) + 1);
     String[][] SECOND_AND_THIRD_CHAR_CODE_MEANING_DATA = {
       {"AA", "Must match billet rating"},
       {
@@ -88,12 +89,13 @@ public class RFASEnlistedCodes implements RFASReferenceData {
       {"SN", "Any Seaman Rating"}
     };
     mSecondAndThirdCharacterCodesHashMap =
-        new HashMap<>(SECOND_AND_THIRD_CHAR_CODE_MEANING_DATA.length);
+        new HashMap<>((int) (SECOND_AND_THIRD_CHAR_CODE_MEANING_DATA.length / 0.75) + 1);
     String[][] FOURTH_CHAR_CODE_MEANING_DATA = {
       {"E", "Either Gender"},
       {"R", "Billet is eligible for IDT-R"}
     };
-    mFourthCharacterCodesHashMap = new HashMap<>(FOURTH_CHAR_CODE_MEANING_DATA.length);
+    mFourthCharacterCodesHashMap =
+        new HashMap<>((int) (FOURTH_CHAR_CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aFIRST_CHAR_CODE_MEANING_DATA : FIRST_CHAR_CODE_MEANING_DATA) {
       mFirstCharacterCodesHashMap.put(
@@ -147,15 +149,8 @@ public class RFASEnlistedCodes implements RFASReferenceData {
   @Override
   public String getFirstCharacterValue(String key) {
 
-    String returnValue;
-
-    if (mFirstCharacterCodesHashMap.containsKey(key)) {
-      returnValue = "1st Element: " + mFirstCharacterCodesHashMap.get(key);
-    } else {
-      returnValue = "No match for code.";
-    }
-
-    return returnValue;
+    String value = mFirstCharacterCodesHashMap.get(key);
+    return value != null ? "1st Element: " + value : "No match for code.";
   }
 
   @Override
@@ -183,15 +178,8 @@ public class RFASEnlistedCodes implements RFASReferenceData {
   @Override
   public String getSecondAndThirdCharacterValue(String key) {
 
-    String returnValue;
-
-    if (mSecondAndThirdCharacterCodesHashMap.containsKey(key)) {
-      returnValue = "2nd Element: " + mSecondAndThirdCharacterCodesHashMap.get(key);
-    } else {
-      returnValue = "No match for code.";
-    }
-
-    return returnValue;
+    String value = mSecondAndThirdCharacterCodesHashMap.get(key);
+    return value != null ? "2nd Element: " + value : "No match for code.";
   }
 
   @Override
@@ -219,14 +207,7 @@ public class RFASEnlistedCodes implements RFASReferenceData {
   @Override
   public String getFourthCharacterValue(String key) {
 
-    String returnValue;
-
-    if (mFourthCharacterCodesHashMap.containsKey(key)) {
-      returnValue = "3rd Element: " + mFourthCharacterCodesHashMap.get(key);
-    } else {
-      returnValue = "No match for code.";
-    }
-
-    return returnValue;
+    String value = mFourthCharacterCodesHashMap.get(key);
+    return value != null ? "3rd Element: " + value : "No match for code.";
   }
 }

@@ -111,7 +111,7 @@ public class IMSCodes implements ReferenceData {
       {"NAO", "Expired DDE-fully available for activation"},
       {"NAI", "Available for INCONUS activation only"},
     };
-    mIMSCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
+    mIMSCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mIMSCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);
