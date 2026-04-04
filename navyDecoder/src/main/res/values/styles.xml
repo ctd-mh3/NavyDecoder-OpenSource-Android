@@ -93,13 +93,5 @@
   </style>
 
   <!-- Not using a theme with Actionbar and xml places a title looking TextView -->
-  <style name="RaterDialogStyle" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <!-- Used for the title and text -->
-    <item name="android:textColorPrimary">@color/raterButtonTextColor</item>
-    <!-- Used for the background -->
-    <!-- 21JUL2020: This appears to have no effect on Android 10 target -->
-    <!--<item name="android:background">@color/raterBackgroundColor</item>-->
-    <item name="android:textColor">@color/raterButtonTextColor</item>
-  </style>
 
 </resources>

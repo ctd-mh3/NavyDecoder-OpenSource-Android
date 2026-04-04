@@ -175,7 +175,9 @@ public class NavyReference extends AppCompatActivity {
     setSupportActionBar(mBinding.toolbar);
 
     // Set Title Bar Title to official app name
-    getSupportActionBar().setTitle(R.string.app_name);
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().setTitle(R.string.app_name);
+    }
 
     // Setup all the spinners
     setupSpinner(new MainDecoderItemSelectedListener());
