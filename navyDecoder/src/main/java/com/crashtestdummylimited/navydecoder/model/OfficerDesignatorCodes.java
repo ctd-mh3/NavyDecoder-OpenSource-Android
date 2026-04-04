@@ -101,14 +101,17 @@ public class OfficerDesignatorCodes implements ReferenceData {
       {"166X", "Special Duty Officer – Strategic Sealift Officer (SSO)"},
       {"168X", "Special Duty Officer (Reserve Recruiting)"},
       {"171X", "Special Duty Officer qualified as a Foreign Area Officer"},
-      {"180X", "Special Duty Officer - Oceanography"},
-      {"181X", "Special Duty Officer – Cryptologic Warfare Officer"},
-      {"182X", "Special Duty Officer – Information Professional Officer"},
-      {"183X", "Special Duty Officer – Intelligence Officer"},
-      {"184X", "Special Duty Officer – Cyber Warfare Engineer"},
-      {"186X", "Special Duty Officer – IWC Flag Officer"},
-      {"187X", "Special Duty Officer - Maritime Space Officer"},
-      {"188X", "Special Duty Officer - Maritime Cyber Warfare Officer (O1 to O6)"},
+      {"180X", "Information Warfare Line Officer - Oceanography"},
+      {"181X", "Information Warfare Line Officer – Cryptologic Warfare Officer"},
+      {"182X", "Information Warfare Line Officer – Information Professional Officer"},
+      {"183X", "Information Warfare Line Officer– Intelligence Officer"},
+      {"184X", "Information Warfare Line Officer– Cyber Warfare Engineer"},
+      {"186X", "Information Warfare Line Officer – IWC Flag Officer"},
+      {
+        "187X",
+        "Information Warfare Line Officer - Maritime Space Officer / Reserve Grades URL/RL O2 to O6"
+      },
+      {"188X", "Information Warfare Line Officer -Maritime Cyber Warfare Officer (O1 to O6)"},
       {
         "190X",
         "An Unrestricted Line Officer under instruction as a prospective Nurse Corps officer"
@@ -165,10 +168,8 @@ public class OfficerDesignatorCodes implements ReferenceData {
       {"611X", "A Limited Duty Officer (Deck - Surface)"},
       {"612X", "A Limited Duty Officer (Operations - Surface)"},
       {"613X", "A Limited Duty Officer (Engineering/Repair - Surface)"},
-      {"616X", "A Limited Duty Officer (Ordnance - Surface)"},
       {"618X", "A Limited Duty Officer (Electronics - Surface)"},
       {"620X", "A Limited Duty Officer (Nuclear Power); Formerly DESIG 640X"},
-      {"621X", "A Limited Duty Officer (Deck - Submarine)"},
       {"623X", "A Limited Duty Officer (Engineering/Repair - Submarine)"},
       {"626X", "A Limited Duty Officer (Ordnance - Submarine)"},
       {"628X", "A Limited Duty Officer (Electronics - Submarine)"},
@@ -180,12 +181,10 @@ public class OfficerDesignatorCodes implements ReferenceData {
       {"639X", "A Limited Duty Officer (Air Traffic Control)"},
       {"641X", "A Limited Duty Officer (Administration)"},
       {"643X", "A Limited Duty Officer (Bandmaster)"},
-      {"647X", "A Limited Duty Officer (Photography)"},
       {"648X", "A Limited Duty Officer (Explosive Ordnance Disposal)"},
       {"649X", "A Limited Duty Officer (Security)"},
       {"651X", "A Limited Duty Officer of the Supply Corps"},
       {"653X", "A Limited Duty Officer of the Civil Engineer Corps"},
-      {"655X", "A Limited Duty Officer of the Judge Advocate General Corps"},
       {"680X", "A Limited Duty Officer (Meteorology/Oceanography) Formerly DESIG 646X"},
       {"681X", "A Limited Duty Officer (Cryptologic Warfare) Formerly DESIG 644X"},
       {"682X", "A Limited Duty Officer (Information Professional) Formerly DESIG 642X"},
@@ -194,16 +193,12 @@ public class OfficerDesignatorCodes implements ReferenceData {
       {"712X", "Operations Technician (Surface)"},
       {"713X", "Engineering Technician (Surface)"},
       {"715X", "Special Warfare Technician"},
-      {"716X", "Ordnance Technician (Surface)"},
       {
         "717X",
         "A Chief Warrant Officer with sophisticated, technical knowledge in all aspects of the Naval Special Warfare Combat Crewman"
       },
       {"718X", "Electronics Technician (Surface)"},
       {"720X", "Diving Officer"},
-      {"721X", "Boatswain (Submarine)"},
-      {"723X", "Engineering Technician (Submarine)"},
-      {"724X", "Repair Technician (Submarine)"},
       {"726X", "Ordnance Technician (Submarine)"},
       {"728X", "Acoustic Technician"},
       {"731X", "Aviation Boatswain"},
@@ -213,9 +208,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
       {"737X", "Air Vehicle Pilot"},
       {"740X", "Nuclear Power Technician"},
       {"741X", "Ship's Clerk"},
-      {"748X", "Explosive Ordnance Disposal Technician"},
       {"749X", "Security Technician"},
-      {"751X", "Supply Corps Warrant"},
       {"752X", "Food Service Warrant"},
       {"753X", "Civil Engineering Warrant"},
       {"756X", "Technical Nurse"},
@@ -235,7 +228,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JAN 2024)";
+    return "NAVPERS 15839I VOL I (JAN 2026)";
   }
 
   @Override

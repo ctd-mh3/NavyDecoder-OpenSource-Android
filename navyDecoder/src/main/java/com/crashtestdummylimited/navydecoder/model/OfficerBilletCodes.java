@@ -145,15 +145,15 @@ public class OfficerBilletCodes implements ReferenceData {
       },
       {
         "1510",
-        "Aerospace Engineering Duty Officer billet requiring Aerospace Engineering (AED) specialty"
+        "Aerospace Engineering Duty Officer billet requiring Aerospace Engineering (AED) specialty."
       },
       {
         "1511",
-        "Aerospace Engineering Duty Officer billet, Code 1 - Operational Flying, requiring the specialty of an Aerospace Engineering Duty (AED) officer who is a designated Pilot or Naval Flight Officer"
+        "Aerospace Engineering Duty Officer billet, Code 1 - Operational Flying, requiring the specialty of an Aerospace Engineering Duty (AED) officer who is a designated Pilot or Naval Flight Officer."
       },
       {
         "1512",
-        "Aerospace Engineering Duty Officer billet, Code 2 - Operational Flying, requiring the specialty of an Aerospace Engineering Duty (AED) Officer who is a designated Pilot or Naval Flight Officer"
+        "Aerospace Engineering Duty Officer billet, Code 2 - Operational Flying, requiring the specialty of an Aerospace Engineering Duty (AED) Officer who is a designated Pilot or Naval Flight Officer."
       },
       {
         "1540",
@@ -177,22 +177,25 @@ public class OfficerBilletCodes implements ReferenceData {
         "1712",
         "Special Duty Officer billet requiring a Foreign Area Officer Code 2 – Operational Flying Involved, a qualified Foreign Area Officer or a Foreign Area Officer Under Instruction"
       },
-      {"1800", "Special Duty Officer - Oceanography"},
+      {"1800", "Information Warfare Line Officer - Oceanography"},
       {
         "1802",
-        "Special Duty Officer billet Code 2 - Operational Flying, requiring Meteorology specialty of a Geophysicist who is a designated Pilot or Naval Flight Officer"
+        "Information Warfare Line Officer billet Code 2 - Operational Flying, requiring Meteorology specialty of a Geophysicist who is a designated Pilot or Naval Flight Officer"
       },
-      {"1810", "Special Duty Officer – Cryptologic Warfare Officer"},
-      {"1820", "Special Duty Officer – Information Professional Officer"},
-      {"1830", "Special Duty Officer – Intelligence Officer"},
-      {"1840", "Special Duty Officer – Cyber Warfare Engineer"},
+      {"1810", "Information Warfare Line Officer – Cryptologic Warfare Officer"},
+      {"1820", "Information Warfare Line Officer – Information Professional Officer"},
+      {"1830", "Information Warfare Line Officer – Intelligence Officer"},
+      {"1840", "Information Warfare Line Officer – Cyber Warfare Engineer"},
       {
         "1850",
         "Billets which may be filled by any appropriately skilled and experienced IWC Officer"
       },
-      {"1860", "Special Duty Officer – IWC Flag Officer"},
-      {"1870", "Warfare –qualified URL/RL officers at O3, O4, O5 and O6 level"},
-      {"1880", "Special Duty Officer-Maritime Cyber Warfare Officer (O1 to O6)"},
+      {"1860", "Information Warfare Line Officer – IWC Flag Officer"},
+      {
+        "1870",
+        "Information Warfare Line Officer – Maritime Space Officer / Warfare –qualified URL/RL officers at O3, O4, O5 and O6 level / Reserve Grades URL/RL O2 to O6"
+      },
+      {"1880", "Information Warfare Line Officer -Maritime Cyber Warfare Officer (O1 to O6)"},
       {"1900", "Unrestricted Line Officer student billet for a prospective Nurse Corps officer"},
       {
         "1910",
@@ -251,19 +254,11 @@ public class OfficerBilletCodes implements ReferenceData {
         "Limited Duty Officer (Line) billet requiring management in Engineering/Repair specialty (Surface)"
       },
       {
-        "6160",
-        "Limited Duty Officer (Line) billet requiring management in Ordnance specialty (Surface)"
-      },
-      {
         "6180",
         "Limited Duty Officer (Line) billet requiring management in Electronics specialty (Surface)"
       },
       {
         "6200", "Limited Duty Officer (Line) billet requiring management in Nuclear Power specialty"
-      },
-      {
-        "6210",
-        "Limited Duty Officer (Line) billet requiring management in Deck specialty (Submarine)"
       },
       {
         "6230",
@@ -310,17 +305,12 @@ public class OfficerBilletCodes implements ReferenceData {
       },
       {"6430", "Limited Duty Officer (Line) billet requiring Bandmaster specialty"},
       {
-        "6470",
-        "Limited Duty Officer (Line) billet requiring management in Photography specialty. SECNAV approved disestablishment 10/1/2017"
-      },
-      {
         "6480",
         "Limited Duty Officer (Line) billet requiring management in Explosive Ordnance Disposal specialty"
       },
       {"6490", "Limited Duty Officer (Line) billet requiring management in Security specialty"},
       {"6510", "Staff Corps Limited Duty Officer billet requiring Supply specialty"},
       {"6530", "Staff Corps Limited Duty Officer billet requiring Civil Engineering specialty"},
-      {"6550", "Staff Corps Limited Duty Officer billet requiring a non-lawyer/paralegal officer"},
       {
         "6800",
         "Limited Duty Officer (Line) billet requiring management in Meteorology/Oceanography specialty"
@@ -351,10 +341,6 @@ public class OfficerBilletCodes implements ReferenceData {
         "Warrant Officer (Line) billet requiring supervision in Special Warfare Technician specialty"
       },
       {
-        "7160",
-        "Warrant Officer (Line) billet requiring supervision in Ordnance Technician specialty (Surface)"
-      },
-      {
         "7170",
         "Warrant Officer (Line) billet requiring supervision in Naval Special Warfare Combat Crewman"
       },
@@ -363,18 +349,6 @@ public class OfficerBilletCodes implements ReferenceData {
         "Warrant Officer (Line) billet requiring supervision in Electronics Technician specialty"
       },
       {"7200", "Warrant Officer (Line) billet requiring specialty of a Diving Officer"},
-      {
-        "7210",
-        "Warrant Officer (Line) billet requiring supervision in Boatswain specialty (Submarine)"
-      },
-      {
-        "7230",
-        "Warrant Officer (Line) billet requiring supervision in Engineering specialty (Submarine)"
-      },
-      {
-        "7240",
-        "Warrant Officer (Line) billet requiring supervision in Repair Technician specialty (Submarine)"
-      },
       {
         "7260",
         "Warrant Officer (Line) billet requiring supervision in Ordnance Technician specialty (Submarine)"
@@ -406,20 +380,12 @@ public class OfficerBilletCodes implements ReferenceData {
       },
       {
         "7400",
-        "Warrant Officer (Line) billet requiring supervision in Nuclear Power Technician specialty"
+        "Warrant Officer (Line) billet requiring supervision in Nuclear Power Technician specialty."
       },
       {"7410", "Warrant Officer (Line) billet requiring supervision in Ship's Clerk specialty"},
       {
-        "7480",
-        "Warrant Officer (Line) billet requiring supervision in Explosive Ordnance Disposal Technician specialty"
-      },
-      {
         "7490",
         "Warrant Officer (Line) billet requiring supervision in Security Technician specialty"
-      },
-      {
-        "7510",
-        "Warrant Officer (Staff Corps) billet requiring supervision in Supply Corps specialty"
       },
       {
         "7520",
@@ -445,6 +411,7 @@ public class OfficerBilletCodes implements ReferenceData {
       },
       {"7840", "Warrant Officer (Line) billet requiring supervision in Cyber Warfare specialty"}
     };
+
     mCodesHashMap = new HashMap<>(CODE_MEANING_DATA.length);
 
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
@@ -455,7 +422,7 @@ public class OfficerBilletCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JAN 2023)";
+    return "NAVPERS 15839I VOL I (JAN 2026)";
   }
 
   @Override
