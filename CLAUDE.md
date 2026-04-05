@@ -28,6 +28,8 @@ Navy Decoder is an Android application (Java, single-module Gradle project) that
 ./gradlew clean
 ```
 
+Spotless covers both Java (`src/main/java/**/*.java`) and XML (`src/main/**/*.xml`). Run `spotlessApply` before committing after any Java or XML changes.
+
 The project has no automated tests. Testing is done by running the app on a device or emulator.
 
 ## Architecture
@@ -49,17 +51,22 @@ All code lookups implement one of two interfaces:
 
 **`RFASReferenceData`** (for RFAS codes): Uses three separate character-position HashMaps (first character, second+third characters, fourth character). The UI composes the three decoded values into one result string.
 
-Implementations store data as hardcoded `String[][] CODE_MEANING_DATA` arrays loaded into `HashMap<String, String>` in the constructor. Keys are sorted via `Collections.sort()` before being returned as arrays.
+Implementations store data as hardcoded `String[][] CODE_MEANING_DATA` arrays loaded into `HashMap<String, String>` in the constructor. Use `new HashMap<>((int)(n / 0.75) + 1)` for the initial capacity — passing `n` directly causes resize during construction since HashMap's default load factor is 0.75. Keys are sorted via `Collections.sort()` before being returned as arrays.
+
+### Model Caching
+
+All model instances are lazily created and cached as private fields in `NavyReference` (e.g., `mRatingCodes`, `mRUICCodes`). The `MainDecoderItemSelectedListener` switch checks `if (mXxxCodes == null) mXxxCodes = new XxxCodes();` before assigning to `mReferenceData`. Do not call `new XxxCodes()` unconditionally — large models like `RUICCodes` (1,800+ entries) are expensive to construct.
 
 ### Adding a New Code Type
 
 **For standard (non-RFAS) types:**
 
-1. Create a new class in `model/` implementing `ReferenceData`.
-2. Add a `case` to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemSelected()`, following the `NON_RFAS` pattern (set `mReferenceData`, call `setupSpinnerFromArray` with `SecondaryDecoderItemSelectedListener`).
-3. Add the display name to `res/values/strings.xml` → `level0_list_array`.
+1. Create a new class in `model/` implementing `ReferenceData`. Use `new HashMap<>((int)(CODE_MEANING_DATA.length / 0.75) + 1)` for the HashMap.
+2. Add a private cached field in `NavyReference` (e.g., `private MyCodes mMyCodes;`).
+3. Append the display name to `res/values/strings.xml` → `level0_list_array`.
+4. Add a `case` to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemSelected()` with the next sequential index, following the lazy-init pattern.
 
-**Important**: The switch matches on the **position index** (`pos`) of the item in `level0_list_array`. When adding a new entry, append it to the end of the array and add a new `case` with the next index. Do not reorder existing entries without updating the corresponding case numbers.
+**Important**: The switch matches on the **position index** (`pos`) of the item in `level0_list_array`. Append new entries to the end of the array — do not reorder existing entries without updating the corresponding case numbers.
 
 **For RFAS types:**
 
@@ -69,7 +76,7 @@ Follow the same steps but implement `RFASReferenceData`, use `Layouts.RFAS` in `
 
 - `versionCode` and `versionName` are set in `navyDecoder/build.gradle` → `defaultConfig`.
 - The changelog is an HTML file at `navyDecoder/src/main/res/raw/changelog.html`.
-- On first launch after an upgrade, the changelog dialog is automatically shown.
+- On first launch after an upgrade, the changelog dialog is automatically shown (`ChangelogBuilder`). The dialog uses `ChangeDialogStyle` (navy background, white text) and injects CSS into the WebView to match theme colors.
 
 ## Key Configuration
 
@@ -78,6 +85,16 @@ Follow the same steps but implement `RFASReferenceData`, use `Layouts.RFAS` in `
 - **Java**: 11 source/target compatibility
 - **View Binding** is enabled; layouts are accessed via `mBinding` in the activity.
 - Release builds use R8 with `proguard-android-optimize.txt` + `proguard-rules.pro`.
+- Gradle property assignments must use `=` syntax (e.g., `viewBinding = true`, `namespace = '...'`) — the old space-separated form is deprecated in Gradle 9 and removed in Gradle 10.
+
+## Icon Assets
+
+The adaptive icon uses vector drawables:
+- `res/drawable/ic_launcher_background.xml` — solid navy `#002855`
+- `res/drawable/ic_launcher_foreground.xml` — radar rings + "ND" lettering in white on transparent
+- `mipmap-anydpi/ic_launcher.xml` and `ic_launcher_round.xml` reference `@drawable/ic_launcher_foreground`
+
+The Play Store 512×512 PNG is `store_icon_512.png` at the repo root (generated via Python/Pillow — not a build output).
 
 ## Reference Data
 
