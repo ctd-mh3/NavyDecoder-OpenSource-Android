@@ -226,7 +226,6 @@ public class SSPCodes implements ReferenceData {
       {"1892", "Podiatry"},
       {"1893", "Physician Assistant"},
       {"1900", "Professional Nursing"},
-      {"1901", "Nursing Administration"},
       {"1903", "Nursing Education"},
       {"1910", "Medical/Surgical Nursing"},
       {"1920", "Maternal and Infant Health Nursing"},
@@ -254,7 +253,7 @@ public class SSPCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JAN 2026)";
+    return "NAVPERS 15839I VOL I (APR 2026)";
   }
 
   @Override
