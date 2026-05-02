@@ -29,6 +29,8 @@ import androidx.core.content.pm.PackageInfoCompat;
 
 public class CommonUtilities {
 
+  private static final String TAG = "CommonUtilities";
+
   public static String getAppVersionName(Activity activity) {
     PackageInfo packageInfo;
     String strVersion;
@@ -37,29 +39,9 @@ public class CommonUtilities {
       strVersion = packageInfo.versionName;
     } catch (NameNotFoundException e) {
       strVersion = "Unknown";
-      Log.w("Unable to get ver name.", e);
+      Log.w(TAG, "Unable to get ver name.", e);
     }
     return strVersion;
-  }
-
-  /**
-   * get the name of the actual version.
-   *
-   * @param context the context
-   * @return the name of the actual version
-   */
-  public static String getActualVersionName(final Context context) {
-    // Get the versionCode of the Package, which must be different
-    // (incremented) in each release on the market in the
-    // AndroidManifest.xml
-    try {
-      return context
-          .getPackageManager()
-          .getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES)
-          .versionName;
-    } catch (NameNotFoundException e) {
-      return "Unknown";
-    }
   }
 
   /**
