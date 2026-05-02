@@ -18,16 +18,17 @@
  */
 package com.crashtestdummylimited.navydecoder.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class RFASOfficerCodes implements RFASReferenceData {
 
   private final HashMap<String, String> mFirstCharacterCodesHashMap;
+  private final String[] mSortedFirstKeys;
   private final HashMap<String, String> mSecondAndThirdCharacterCodesHashMap;
+  private final String[] mSortedSecondAndThirdKeys;
   private final HashMap<String, String> mFourthCharacterCodesHashMap;
+  private final String[] mSortedFourthKeys;
 
   public RFASOfficerCodes() {
     String[][] FIRST_CHAR_CODE_MEANING_DATA = {
@@ -113,16 +114,26 @@ public class RFASOfficerCodes implements RFASReferenceData {
       mFirstCharacterCodesHashMap.put(
           aFIRST_CHAR_CODE_MEANING_DATA[0], aFIRST_CHAR_CODE_MEANING_DATA[1]);
     }
+    String[] firstKeys = mFirstCharacterCodesHashMap.keySet().toArray(new String[0]);
+    Arrays.sort(firstKeys);
+    mSortedFirstKeys = firstKeys;
     for (String[] aSECOND_AND_THIRD_CHAR_CODE_MEANING_DATA :
         SECOND_AND_THIRD_CHAR_CODE_MEANING_DATA) {
       mSecondAndThirdCharacterCodesHashMap.put(
           aSECOND_AND_THIRD_CHAR_CODE_MEANING_DATA[0], aSECOND_AND_THIRD_CHAR_CODE_MEANING_DATA[1]);
     }
+    String[] secondAndThirdKeys =
+        mSecondAndThirdCharacterCodesHashMap.keySet().toArray(new String[0]);
+    Arrays.sort(secondAndThirdKeys);
+    mSortedSecondAndThirdKeys = secondAndThirdKeys;
 
     for (String[] aFOURTH_CHAR_CODE_MEANING_DATA : FOURTH_CHAR_CODE_MEANING_DATA) {
       mFourthCharacterCodesHashMap.put(
           aFOURTH_CHAR_CODE_MEANING_DATA[0], aFOURTH_CHAR_CODE_MEANING_DATA[1]);
     }
+    String[] fourthKeys = mFourthCharacterCodesHashMap.keySet().toArray(new String[0]);
+    Arrays.sort(fourthKeys);
+    mSortedFourthKeys = fourthKeys;
   }
 
   @Override
@@ -138,24 +149,7 @@ public class RFASOfficerCodes implements RFASReferenceData {
 
   @Override
   public String[] getFirstCharacterKeys() {
-
-    // TO-DO:  All of this is likely not needed.  We know the # of keys so
-    //        we should just be able to create a static array of that
-    //        size and then copy the keys over as we iterator through them
-    Iterator<String> iterator = mFirstCharacterCodesHashMap.keySet().iterator();
-
-    ArrayList<String> mArrayList = new ArrayList<>();
-
-    while (iterator.hasNext()) {
-      mArrayList.add(iterator.next());
-    }
-
-    Collections.sort(mArrayList);
-
-    String[] stringArray = new String[mArrayList.size()];
-    stringArray = mArrayList.toArray(stringArray);
-
-    return stringArray;
+    return mSortedFirstKeys;
   }
 
   @Override
@@ -167,24 +161,7 @@ public class RFASOfficerCodes implements RFASReferenceData {
 
   @Override
   public String[] getSecondAndThirdCharacterKeys() {
-
-    // TO-DO:  All of this is likely not needed.  We know the # of keys so
-    //        we should just be able to create a static array of that
-    //        size and then copy the keys over as we iterator through them
-    Iterator<String> iterator = mSecondAndThirdCharacterCodesHashMap.keySet().iterator();
-
-    ArrayList<String> mArrayList = new ArrayList<>();
-
-    while (iterator.hasNext()) {
-      mArrayList.add(iterator.next());
-    }
-
-    Collections.sort(mArrayList);
-
-    String[] stringArray = new String[mArrayList.size()];
-    stringArray = mArrayList.toArray(stringArray);
-
-    return stringArray;
+    return mSortedSecondAndThirdKeys;
   }
 
   @Override
@@ -196,24 +173,7 @@ public class RFASOfficerCodes implements RFASReferenceData {
 
   @Override
   public String[] getFourthCharacterKeys() {
-
-    // TO-DO:  All of this is likely not needed.  We know the # of keys so
-    //        we should just be able to create a static array of that
-    //        size and then copy the keys over as we iterator through them
-    Iterator<String> iterator = mFourthCharacterCodesHashMap.keySet().iterator();
-
-    ArrayList<String> mArrayList = new ArrayList<>();
-
-    while (iterator.hasNext()) {
-      mArrayList.add(iterator.next());
-    }
-
-    Collections.sort(mArrayList);
-
-    String[] stringArray = new String[mArrayList.size()];
-    stringArray = mArrayList.toArray(stringArray);
-
-    return stringArray;
+    return mSortedFourthKeys;
   }
 
   @Override
