@@ -22,7 +22,6 @@ package com.crashtestdummylimited.navydecoder.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 import androidx.core.content.pm.PackageInfoCompat;

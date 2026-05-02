@@ -18,14 +18,13 @@
  */
 package com.crashtestdummylimited.navydecoder.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class RatingCodes implements ReferenceData {
 
   private final HashMap<String, String> mCodesHashMap;
+  private final String[] mSortedKeys;
 
   public RatingCodes() {
     String[][] mCodeData = {
@@ -139,6 +138,9 @@ public class RatingCodes implements ReferenceData {
     for (String[] aMCodeData : mCodeData) {
       mCodesHashMap.put(aMCodeData[0], aMCodeData[1]);
     }
+    String[] keys = mCodesHashMap.keySet().toArray(new String[0]);
+    Arrays.sort(keys);
+    mSortedKeys = keys;
   }
 
   @Override
@@ -155,24 +157,7 @@ public class RatingCodes implements ReferenceData {
 
   @Override
   public String[] getKeys() {
-
-    // TO-DO:  All of this is likely not needed.  We know the # of keys so
-    //        we should just be able to create a static array of that
-    //        size and then copy the keys over as we iterator through them
-    Iterator<String> iterator = mCodesHashMap.keySet().iterator();
-
-    ArrayList<String> mArrayList = new ArrayList<>();
-
-    while (iterator.hasNext()) {
-      mArrayList.add(iterator.next());
-    }
-
-    Collections.sort(mArrayList);
-
-    String[] stringArray = new String[mArrayList.size()];
-    stringArray = mArrayList.toArray(stringArray);
-
-    return stringArray;
+    return mSortedKeys;
   }
 
   @Override

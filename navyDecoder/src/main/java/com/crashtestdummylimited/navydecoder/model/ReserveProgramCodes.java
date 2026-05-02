@@ -18,14 +18,13 @@
  */
 package com.crashtestdummylimited.navydecoder.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class ReserveProgramCodes implements ReferenceData {
 
   private final HashMap<String, String> mCodesHashMap;
+  private final String[] mSortedKeys;
 
   public ReserveProgramCodes() {
     String[][] CODE_MEANING_DATA = {
@@ -87,6 +86,9 @@ public class ReserveProgramCodes implements ReferenceData {
     for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
       mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);
     }
+    String[] keys = mCodesHashMap.keySet().toArray(new String[0]);
+    Arrays.sort(keys);
+    mSortedKeys = keys;
   }
 
   @Override
@@ -103,24 +105,7 @@ public class ReserveProgramCodes implements ReferenceData {
 
   @Override
   public String[] getKeys() {
-
-    // TO-DO:  All of this is likely not needed.  We know the # of keys so
-    //        we should just be able to create a static array of that
-    //        size and then copy the keys over as we iterator through them
-    Iterator<String> iterator = mCodesHashMap.keySet().iterator();
-
-    ArrayList<String> mArrayList = new ArrayList<>();
-
-    while (iterator.hasNext()) {
-      mArrayList.add(iterator.next());
-    }
-
-    Collections.sort(mArrayList);
-
-    String[] stringArray = new String[mArrayList.size()];
-    stringArray = mArrayList.toArray(stringArray);
-
-    return stringArray;
+    return mSortedKeys;
   }
 
   @Override
