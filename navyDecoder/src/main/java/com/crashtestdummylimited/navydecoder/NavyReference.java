@@ -197,9 +197,10 @@ public class NavyReference extends AppCompatActivity {
 
     // Setup all the spinners
     setupSpinner(new MainDecoderItemSelectedListener());
+    mIMSCodes = new IMSCodes();
     setupSpinnerFromArray(
         mBinding.secondaryDecodeSpinner,
-        (new IMSCodes()).getKeys(),
+        mIMSCodes.getKeys(),
         new SecondaryDecoderItemSelectedListener());
 
     // For debugging
