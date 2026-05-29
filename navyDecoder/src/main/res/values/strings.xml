@@ -29,9 +29,6 @@
   <string name="emailErrorTitle">Email Error</string>
   <string name="emailErrorMessage">Your device has no email application installed.</string>
 
-  <!-- Change Log Dialog Information -->
-  <string name="changelog_title">Change Log</string>
-
   <string name="topLevelDescription">Quick reference to various US Navy related codes</string>
 
   <string name="mainDecodeDescription">Code Category To Decode:</string>

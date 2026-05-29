@@ -83,12 +83,6 @@
     <item name="android:textColor">@color/applicationTextColor</item>
   </style>
 
-  <style name="ChangeDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-    <item name="android:textColorPrimary">@color/changeLogTextColor</item>
-    <item name="android:background">@color/changeLogBackgroundColor</item>
-    <item name="colorAccent">@color/changeLogTextColor</item>
-  </style>
-
   <!-- Not using a theme with Actionbar and xml places a title looking TextView -->
 
 </resources>
