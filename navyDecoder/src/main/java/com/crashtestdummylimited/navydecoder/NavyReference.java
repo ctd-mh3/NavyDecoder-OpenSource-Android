@@ -37,7 +37,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.preference.PreferenceManager;
 import com.crashtestdummylimited.navydecoder.controller.MenuOptions;
 import com.crashtestdummylimited.navydecoder.databinding.MainScreenBinding;
 import com.crashtestdummylimited.navydecoder.model.IMSCodes;
@@ -56,7 +55,6 @@ import com.crashtestdummylimited.navydecoder.model.RatingCodes;
 import com.crashtestdummylimited.navydecoder.model.ReferenceData;
 import com.crashtestdummylimited.navydecoder.model.ReserveProgramCodes;
 import com.crashtestdummylimited.navydecoder.model.SSPCodes;
-import com.crashtestdummylimited.navydecoder.util.ChangelogBuilder;
 import com.crashtestdummylimited.navydecoder.util.CommonUtilities;
 import com.google.android.gms.tasks.Task;
 import com.google.android.play.core.review.ReviewInfo;
@@ -68,9 +66,6 @@ public class NavyReference extends AppCompatActivity {
   private static final String TAG = NavyReference.class.getSimpleName();
 
   private MainScreenBinding mBinding;
-
-  /** Key for latest version code preference. */
-  private static final String LAST_VERSION_CODE_KEY = "last_version_code";
 
   // For Play Store In-App Review
   private static final String REVIEW_PREFS = "review_prefs";
@@ -203,15 +198,7 @@ public class NavyReference extends AppCompatActivity {
         mIMSCodes.getKeys(),
         new SecondaryDecoderItemSelectedListener());
 
-    // For debugging
-    // showChangelog();
-
     tryRequestReviewIfAppropriate();
-
-    /* show changelog */
-    if (isUpdate()) {
-      showChangelog();
-    }
   }
 
   private void updateLayoutDueToMainDecoderItemSelection(Layouts layout) {
@@ -466,47 +453,6 @@ public class NavyReference extends AppCompatActivity {
     public void onNothingSelected(AdapterView<?> parent) {
       // Do nothing.
     }
-  }
-
-  /**
-   * checks if the app is started for the first time (after an update).
-   *
-   * @return <code>true</code> if this is the first start (after an update) else <code>false</code>
-   */
-  private boolean isUpdate() {
-    // Get the versionCode of the Package, which must be different (incremented) in each release
-    //  in AndroidManifest.xml
-    final long versionCode = CommonUtilities.getActualVersionCode(this);
-
-    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    final long lastVersionCode = prefs.getLong(LAST_VERSION_CODE_KEY, 0);
-
-    if (versionCode != lastVersionCode) {
-      Log.i(
-          TAG,
-          "versionCode "
-              + versionCode
-              + " is different from the last known version "
-              + lastVersionCode);
-      return true;
-    } else {
-      Log.i(TAG, "versionCode " + versionCode + " is already known");
-      return false;
-    }
-  }
-
-  private void showChangelog() {
-    final long versionCode = CommonUtilities.getActualVersionCode(this);
-    final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-    ChangelogBuilder.create(
-            this,
-            (dialogInterface, i) -> {
-              // Mark this version as read
-              sp.edit().putLong(LAST_VERSION_CODE_KEY, versionCode).apply();
-
-              dialogInterface.dismiss();
-            })
-        .show();
   }
 
   public void tryRequestReviewIfAppropriate() {
