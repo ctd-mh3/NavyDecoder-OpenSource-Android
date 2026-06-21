@@ -38,6 +38,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.crashtestdummylimited.navydecoder.controller.MenuOptions;
+import com.crashtestdummylimited.navydecoder.util.AppUpdateChecker;
 import com.crashtestdummylimited.navydecoder.databinding.MainScreenBinding;
 import com.crashtestdummylimited.navydecoder.model.IMSCodes;
 import com.crashtestdummylimited.navydecoder.model.MASCodes;
@@ -199,6 +200,12 @@ public class NavyReference extends AppCompatActivity {
         new SecondaryDecoderItemSelectedListener());
 
     tryRequestReviewIfAppropriate();
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    AppUpdateChecker.checkForUpdate(this);
   }
 
   private void updateLayoutDueToMainDecoderItemSelection(Layouts layout) {
