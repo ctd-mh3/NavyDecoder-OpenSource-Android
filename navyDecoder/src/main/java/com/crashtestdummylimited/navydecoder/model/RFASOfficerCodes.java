@@ -110,26 +110,22 @@ public class RFASOfficerCodes implements RFASReferenceData {
     mFourthCharacterCodesHashMap =
         new HashMap<>((int) (FOURTH_CHAR_CODE_MEANING_DATA.length / 0.75) + 1);
 
-    for (String[] aFIRST_CHAR_CODE_MEANING_DATA : FIRST_CHAR_CODE_MEANING_DATA) {
-      mFirstCharacterCodesHashMap.put(
-          aFIRST_CHAR_CODE_MEANING_DATA[0], aFIRST_CHAR_CODE_MEANING_DATA[1]);
+    for (String[] row : FIRST_CHAR_CODE_MEANING_DATA) {
+      mFirstCharacterCodesHashMap.put(row[0], row[1]);
     }
     String[] firstKeys = mFirstCharacterCodesHashMap.keySet().toArray(new String[0]);
     Arrays.sort(firstKeys);
     mSortedFirstKeys = firstKeys;
-    for (String[] aSECOND_AND_THIRD_CHAR_CODE_MEANING_DATA :
-        SECOND_AND_THIRD_CHAR_CODE_MEANING_DATA) {
-      mSecondAndThirdCharacterCodesHashMap.put(
-          aSECOND_AND_THIRD_CHAR_CODE_MEANING_DATA[0], aSECOND_AND_THIRD_CHAR_CODE_MEANING_DATA[1]);
+    for (String[] row : SECOND_AND_THIRD_CHAR_CODE_MEANING_DATA) {
+      mSecondAndThirdCharacterCodesHashMap.put(row[0], row[1]);
     }
     String[] secondAndThirdKeys =
         mSecondAndThirdCharacterCodesHashMap.keySet().toArray(new String[0]);
     Arrays.sort(secondAndThirdKeys);
     mSortedSecondAndThirdKeys = secondAndThirdKeys;
 
-    for (String[] aFOURTH_CHAR_CODE_MEANING_DATA : FOURTH_CHAR_CODE_MEANING_DATA) {
-      mFourthCharacterCodesHashMap.put(
-          aFOURTH_CHAR_CODE_MEANING_DATA[0], aFOURTH_CHAR_CODE_MEANING_DATA[1]);
+    for (String[] row : FOURTH_CHAR_CODE_MEANING_DATA) {
+      mFourthCharacterCodesHashMap.put(row[0], row[1]);
     }
     String[] fourthKeys = mFourthCharacterCodesHashMap.keySet().toArray(new String[0]);
     Arrays.sort(fourthKeys);
