@@ -77,7 +77,7 @@ android {
 
 spotless {
     java {
-        target 'src/main/java/**/*.java', 'src/test/java/**/*.java'
+        target 'src/main/java/**/*.java', 'src/test/java/**/*.java', 'src/androidTest/java/**/*.java'
         googleJavaFormat('1.35.0')
         removeUnusedImports()
         trimTrailingWhitespace()
