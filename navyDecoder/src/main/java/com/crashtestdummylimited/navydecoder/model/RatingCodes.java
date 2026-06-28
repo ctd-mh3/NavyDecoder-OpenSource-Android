@@ -27,7 +27,7 @@ public class RatingCodes implements ReferenceData {
   private final String[] mSortedKeys;
 
   public RatingCodes() {
-    String[][] mCodeData = {
+    String[][] codeData = {
       {"AN", "Airman"},
       {"CN", "Constructionman"},
       {"FN", "Fireman"},
@@ -133,10 +133,10 @@ public class RatingCodes implements ReferenceData {
       {"YN", "Yeoman"},
       {"YNS", "Yeoman (Submarine)"}
     };
-    mCodesHashMap = new HashMap<>((int) (mCodeData.length / 0.75) + 1);
+    mCodesHashMap = new HashMap<>((int) (codeData.length / 0.75) + 1);
 
-    for (String[] aMCodeData : mCodeData) {
-      mCodesHashMap.put(aMCodeData[0], aMCodeData[1]);
+    for (String[] row : codeData) {
+      mCodesHashMap.put(row[0], row[1]);
     }
     String[] keys = mCodesHashMap.keySet().toArray(new String[0]);
     Arrays.sort(keys);

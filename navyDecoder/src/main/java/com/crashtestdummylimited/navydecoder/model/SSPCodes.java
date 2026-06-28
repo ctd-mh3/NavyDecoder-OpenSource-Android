@@ -244,8 +244,8 @@ public class SSPCodes implements ReferenceData {
     };
     mCodesHashMap = new HashMap<>((int) (CODE_MEANING_DATA.length / 0.75) + 1);
 
-    for (String[] aCODE_MEANING_DATA : CODE_MEANING_DATA) {
-      mCodesHashMap.put(aCODE_MEANING_DATA[0], aCODE_MEANING_DATA[1]);
+    for (String[] row : CODE_MEANING_DATA) {
+      mCodesHashMap.put(row[0], row[1]);
     }
     String[] keys = mCodesHashMap.keySet().toArray(new String[0]);
     Arrays.sort(keys);
