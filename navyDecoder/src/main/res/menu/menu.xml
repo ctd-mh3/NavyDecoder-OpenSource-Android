@@ -6,6 +6,15 @@
     android:id="@+id/optionsMenuOpenSource"
     android:title="@string/openSource" />
   <item
+    android:id="@+id/optionsMenuRateApp"
+    android:title="@string/rateApp" />
+  <item
+    android:id="@+id/optionsMenuShare"
+    android:title="@string/share" />
+  <item
     android:id="@+id/optionsMenuEmailAuthor"
     android:title="@string/emailAuthor" />
+  <item
+    android:id="@+id/optionsMenuPrivacyPolicy"
+    android:title="@string/privacyPolicy" />
 </menu>
