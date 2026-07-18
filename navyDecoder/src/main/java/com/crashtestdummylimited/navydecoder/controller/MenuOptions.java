@@ -19,7 +19,6 @@
 package com.crashtestdummylimited.navydecoder.controller;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -28,6 +27,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.crashtestdummylimited.navydecoder.R;
 import com.crashtestdummylimited.navydecoder.util.CommonUtilities;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
@@ -65,7 +65,7 @@ public class MenuOptions {
               + activity.getString(R.string.aboutVersion)
               + CommonUtilities.getAppVersionName(activity);
 
-      AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+      MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(activity);
       alertDialog.setTitle(activity.getString(R.string.aboutTitle));
       alertDialog.setMessage(message);
       alertDialog.setPositiveButton(android.R.string.ok, (dialog, which) -> {});
@@ -79,7 +79,7 @@ public class MenuOptions {
               + "\n\n"
               + activity.getString(R.string.opensourceNoticeLine3);
 
-      AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+      MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(activity);
       alertDialog.setTitle(activity.getString(R.string.opensourceTitle));
       alertDialog.setMessage(message);
       alertDialog.setPositiveButton(android.R.string.ok, (dialog, which) -> {});
@@ -131,7 +131,7 @@ public class MenuOptions {
         activity.startActivity(chooser);
       } catch (ActivityNotFoundException e) {
         // Define what your app should do if no activity can handle the intent.
-        AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(activity);
+        MaterialAlertDialogBuilder alertDialog2 = new MaterialAlertDialogBuilder(activity);
         alertDialog2.setTitle(activity.getString(R.string.emailErrorTitle));
         alertDialog2.setMessage(activity.getString(R.string.emailErrorMessage));
         alertDialog2.setPositiveButton(android.R.string.ok, (dialog, which) -> {});
@@ -143,6 +143,7 @@ public class MenuOptions {
               Intent.ACTION_VIEW, Uri.parse("https://crashtestdummylimited.com/page1.html")));
     }
   }
+
   // *************************************************************************
   //  End Menu Support Code
   // *************************************************************************

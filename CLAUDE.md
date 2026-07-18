@@ -34,7 +34,9 @@ The project has no automated tests. Testing is done by running the app on a devi
 
 ## Architecture
 
-Single `Activity` (`NavyReference.java`) with no Fragments. The app uses a two-level spinner UI: a primary spinner selects the code category, and a secondary spinner selects the specific code to decode. RFAS codes use a special three-spinner layout.
+Single `Activity` (`NavyReference.java`) with no Fragments. The UI is built on Material 3 (`Theme.Material3.DayNight.NoActionBar`, `MaterialToolbar`, `MaterialAlertDialogBuilder`), with an M3 color scheme generated from the app's brand blue (`res/values/colors.xml` `m3_color*` tokens). The app uses a two-level picker UI: a primary field selects the code category, and a secondary field selects the specific code to decode. Both are non-editable Material exposed dropdown menus (`TextInputLayout` + `AutoCompleteTextView` with `android:inputType="none"`) rather than platform `Spinner`s, so they open a Material popup on tap but don't accept typed filtering. RFAS codes use a special three-field row (`rfasSpinnerLayout`, a weighted horizontal `LinearLayout` so the fields share width evenly rather than overflow on narrow screens).
+
+Fields stay empty (showing their floating hint) until the user actively picks a value — there is no default/auto-selected item, so `NavyReference`'s listeners (`MainDecoderItemSelectedListener`, `SecondaryDecoderItemSelectedListener`, `RFASDecoderItemSelectedListener`) implement `AdapterView.OnItemClickListener`, not `OnItemSelectedListener`. `setupSpinnerFromArray` clears a field's text before attaching a new adapter, so switching categories can't leave a stale key showing in a field that hasn't been re-picked yet.
 
 ### Package Structure
 
@@ -64,7 +66,7 @@ All model instances are lazily created and cached as private fields in `NavyRefe
 1. Create a new class in `model/` implementing `ReferenceData`. Use `new HashMap<>((int)(CODE_MEANING_DATA.length / 0.75) + 1)` for the HashMap.
 2. Add a private cached field in `NavyReference` (e.g., `private MyCodes mMyCodes;`).
 3. Append the display name to `res/values/strings.xml` → `level0_list_array`.
-4. Add a `case` to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemSelected()` with the next sequential index, following the lazy-init pattern.
+4. Add a `case` to the `switch` in `NavyReference.MainDecoderItemSelectedListener.onItemClick()` with the next sequential index, following the lazy-init pattern.
 
 **Important**: The switch matches on the **position index** (`pos`) of the item in `level0_list_array`. Append new entries to the end of the array — do not reorder existing entries without updating the corresponding case numbers.
 
