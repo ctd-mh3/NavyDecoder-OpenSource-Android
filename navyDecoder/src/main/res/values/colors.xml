@@ -5,21 +5,63 @@
   https://stackoverflow.com/questions/18288402/how-to-set-custom-actionbar-color-style/32324163#32324163
   -->
 
-  <color name="appBackground">#f5f5f5</color>
-  <color name="mainDescription_Background">#e2e2e2</color>
-  <color name="decodeDescription_Background">#e2e2e2</color>
-
-  <!--   your app branding color for the app bar -->
-  <color name="colorPrimary">#0446ef</color>
   <!--   darker variant for the status bar and contextual app bars -->
   <color name="colorPrimaryDark">#303F9F</color>
-  <!--   theme UI controls like checkboxes and text fields -->
-  <color name="colorAccent">#FFFFFF</color>
-  <color name="applicationTextColor">#0446ef</color>
-  <!-- Sets the color of the text in a spinner when the user has opened the spinner to select a new value -->
-  <!-- Sets the color for the text background in a spinner before the user selects a new value -->
 
-  <!-- Menu -->
-  <color name="menuBackgroundColor">#e2e2e2</color>
+  <!--
+  Material 3 color scheme, generated from the brand blue (#0446ef) using
+  Google's material-color-utilities reference implementation (SchemeContent
+  variant, which preserves the seed's chroma instead of flattening it, so
+  primary stays visually close to the launcher icon's brand color).
+  -->
+  <color name="m3_colorPrimary">#0033B8</color>
+  <color name="m3_colorOnPrimary">#FFFFFF</color>
+  <color name="m3_colorPrimaryContainer">#0446EF</color>
+  <color name="m3_colorOnPrimaryContainer">#CBD2FF</color>
+  <color name="m3_colorPrimaryInverse">#B8C3FF</color>
+
+  <color name="m3_colorSecondary">#4859A4</color>
+  <color name="m3_colorOnSecondary">#FFFFFF</color>
+  <color name="m3_colorSecondaryContainer">#9BACFD</color>
+  <color name="m3_colorOnSecondaryContainer">#2C3D87</color>
+
+  <color name="m3_colorTertiary">#740092</color>
+  <color name="m3_colorOnTertiary">#FFFFFF</color>
+  <color name="m3_colorTertiaryContainer">#951CB7</color>
+  <color name="m3_colorOnTertiaryContainer">#F7C3FF</color>
+
+  <color name="m3_colorError">#BA1A1A</color>
+  <color name="m3_colorOnError">#FFFFFF</color>
+  <color name="m3_colorErrorContainer">#FFDAD6</color>
+  <color name="m3_colorOnErrorContainer">#93000A</color>
+
+  <!--
+  "Deep Tide" neutral axis: tied to the launcher icon's navy hue (262°) at chroma 16
+  (20 for the variant). The page background is deliberately pinned to the
+  surfaceContainer tone rather than the near-white "surface" tone — M3 keeps
+  surface/background at ~98-99% lightness by spec regardless of chroma, which reads
+  as flat/bland no matter how saturated the neutral hue is. Since this screen has no
+  cards sitting on top of the page, the container tone IS the visible background.
+  -->
+  <color name="m3_colorBackground">#E8EEFF</color>
+  <color name="m3_colorOnBackground">#121C2B</color>
+  <color name="m3_colorSurface">#E8EEFF</color>
+  <color name="m3_colorOnSurface">#121C2B</color>
+  <color name="m3_colorSurfaceVariant">#D6E3FF</color>
+  <color name="m3_colorOnSurfaceVariant">#3A475E</color>
+  <color name="m3_colorSurfaceInverse">#283141</color>
+  <color name="m3_colorOnSurfaceInverse">#ECF0FF</color>
+
+  <color name="m3_colorOutline">#6B7790</color>
+  <color name="m3_colorOutlineVariant">#BAC7E3</color>
+  <color name="m3_colorScrim">#000000</color>
+
+  <color name="m3_colorSurfaceDim">#D1DAF0</color>
+  <color name="m3_colorSurfaceBright">#F9F9FF</color>
+  <color name="m3_colorSurfaceContainerLowest">#FFFFFF</color>
+  <color name="m3_colorSurfaceContainerLow">#F0F3FF</color>
+  <color name="m3_colorSurfaceContainer">#E8EEFF</color>
+  <color name="m3_colorSurfaceContainerHigh">#DFE8FE</color>
+  <color name="m3_colorSurfaceContainerHighest">#D9E3F9</color>
 
 </resources>

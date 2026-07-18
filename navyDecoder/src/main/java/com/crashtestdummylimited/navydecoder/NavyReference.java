@@ -23,22 +23,19 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.AutoCompleteTextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.crashtestdummylimited.navydecoder.controller.MenuOptions;
-import com.crashtestdummylimited.navydecoder.util.AppUpdateChecker;
 import com.crashtestdummylimited.navydecoder.databinding.MainScreenBinding;
 import com.crashtestdummylimited.navydecoder.model.IMSCodes;
 import com.crashtestdummylimited.navydecoder.model.MASCodes;
@@ -56,8 +53,9 @@ import com.crashtestdummylimited.navydecoder.model.RatingCodes;
 import com.crashtestdummylimited.navydecoder.model.ReferenceData;
 import com.crashtestdummylimited.navydecoder.model.ReserveProgramCodes;
 import com.crashtestdummylimited.navydecoder.model.SSPCodes;
-import com.crashtestdummylimited.navydecoder.util.CommonUtilities;
+import com.crashtestdummylimited.navydecoder.util.AppUpdateChecker;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
@@ -123,29 +121,28 @@ public class NavyReference extends AppCompatActivity {
   //  End Menu Support Code
   // *************************************************************************
 
-  private void setupSpinner(OnItemSelectedListener listener) {
+  private void setupSpinner(OnItemClickListener listener) {
 
     ArrayAdapter<CharSequence> adapter =
         ArrayAdapter.createFromResource(
-            this, R.array.level0_list_array, android.R.layout.simple_spinner_item);
+            this, R.array.level0_list_array, android.R.layout.simple_list_item_1);
 
-    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     mBinding.mainDecodeSpinner.setAdapter(adapter);
-
-    mBinding.mainDecodeSpinner.setOnItemSelectedListener(listener);
+    mBinding.mainDecodeSpinner.setOnItemClickListener(listener);
   }
 
   private void setupSpinnerFromArray(
-      Spinner spinner, String[] stringArray, OnItemSelectedListener listener) {
+      AutoCompleteTextView field, String[] stringArray, OnItemClickListener listener) {
 
-    ArrayAdapter<CharSequence> adapter =
-        new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stringArray);
+    ArrayAdapter<String> adapter =
+        new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, stringArray);
 
-    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    field.setAdapter(adapter);
+    field.setOnItemClickListener(listener);
 
-    spinner.setAdapter(adapter);
-
-    spinner.setOnItemSelectedListener(listener);
+    // Non-editable exposed dropdown menus keep whatever text was last chosen, so clear any
+    // leftover selection from a previous category rather than showing a stale key.
+    field.setText("", false);
   }
 
   /** Called when the activity is first created. */
@@ -191,13 +188,9 @@ public class NavyReference extends AppCompatActivity {
       getSupportActionBar().setTitle(R.string.app_name);
     }
 
-    // Setup all the spinners
+    // Set up the primary category picker. Nothing else is populated until the user picks a
+    // category — the secondary/RFAS fields and decode result stay empty until then.
     setupSpinner(new MainDecoderItemSelectedListener());
-    mIMSCodes = new IMSCodes();
-    setupSpinnerFromArray(
-        mBinding.secondaryDecodeSpinner,
-        mIMSCodes.getKeys(),
-        new SecondaryDecoderItemSelectedListener());
 
     tryRequestReviewIfAppropriate();
   }
@@ -211,19 +204,19 @@ public class NavyReference extends AppCompatActivity {
   private void updateLayoutDueToMainDecoderItemSelection(Layouts layout) {
 
     if (layout == Layouts.NON_RFAS) {
-      // Default layout w/ simple secondary spinner
-      mBinding.secondaryDecodeSpinner.setVisibility(android.view.View.VISIBLE);
+      // Default layout w/ simple secondary field
+      mBinding.secondaryDecodeSpinnerLayout.setVisibility(android.view.View.VISIBLE);
       mBinding.rfasSpinnerLayout.setVisibility(android.view.View.GONE);
     } else {
-      // Layout option for RFAS spinner layout
-      mBinding.secondaryDecodeSpinner.setVisibility(android.view.View.GONE);
+      // Layout option for RFAS fields
+      mBinding.secondaryDecodeSpinnerLayout.setVisibility(android.view.View.GONE);
       mBinding.rfasSpinnerLayout.setVisibility(android.view.View.VISIBLE);
     }
   }
 
-  private class MainDecoderItemSelectedListener implements OnItemSelectedListener {
+  private class MainDecoderItemSelectedListener implements OnItemClickListener {
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 
       // Switch on position index to match level0_list_array order in strings.xml.
       // This avoids fragile string matching — renaming a display string no longer breaks dispatch.
@@ -381,16 +374,16 @@ public class NavyReference extends AppCompatActivity {
               new SecondaryDecoderItemSelectedListener());
           break;
       }
-    }
 
-    public void onNothingSelected(AdapterView<?> parent) {
-      // Do nothing.
+      // Clear any decoded result left over from the previous category.
+      mBinding.decodeDescription.setText("");
+      mBinding.sourceDescription.setText("");
     }
   }
 
-  private class RFASDecoderItemSelectedListener implements OnItemSelectedListener {
+  private class RFASDecoderItemSelectedListener implements OnItemClickListener {
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 
       if (mRfasReferenceData == null) {
         mBinding.decodeDescription.setText("");
@@ -398,44 +391,38 @@ public class NavyReference extends AppCompatActivity {
         return;
       }
 
-      String firstCharacterKey =
-          mBinding
-              .rfasFirstCharacter
-              .getItemAtPosition(mBinding.rfasFirstCharacter.getSelectedItemPosition())
-              .toString();
-      String firstCharacterValue = mRfasReferenceData.getFirstCharacterValue(firstCharacterKey);
+      // Each field is non-editable, so its displayed text is always exactly the key the user
+      // last tapped in that field's dropdown — read it directly rather than tracking position.
+      String firstCharacterKey = mBinding.rfasFirstCharacter.getText().toString();
+      String secondAndThirdCharacterKey = mBinding.rfasSecondAndThirdCharacter.getText().toString();
+      String fourthCharacterKey = mBinding.rfasFourthCharacter.getText().toString();
 
-      String secondAndThirdCharacterKey =
-          mBinding
-              .rfasSecondAndThirdCharacter
-              .getItemAtPosition(mBinding.rfasSecondAndThirdCharacter.getSelectedItemPosition())
-              .toString();
+      if (firstCharacterKey.isEmpty()
+          || secondAndThirdCharacterKey.isEmpty()
+          || fourthCharacterKey.isEmpty()) {
+        // Wait until all three RFAS fields have a selection before decoding.
+        mBinding.decodeDescription.setText("");
+        mBinding.sourceDescription.setText("");
+        return;
+      }
+
+      String firstCharacterValue = mRfasReferenceData.getFirstCharacterValue(firstCharacterKey);
       String secondAndThirdCharacterValue =
           mRfasReferenceData.getSecondAndThirdCharacterValue(secondAndThirdCharacterKey);
-
-      String fourthCharacterKey =
-          mBinding
-              .rfasFourthCharacter
-              .getItemAtPosition(mBinding.rfasFourthCharacter.getSelectedItemPosition())
-              .toString();
       String fourthCharacterValue = mRfasReferenceData.getFourthCharacterValue(fourthCharacterKey);
 
       String resultString =
           firstCharacterValue + "\n" + secondAndThirdCharacterValue + "\n" + fourthCharacterValue;
       mBinding.decodeDescription.setText(resultString);
 
-      String SOURCE_INFO = mRfasReferenceData.getSourceInfo();
-      mBinding.sourceDescription.setText(SOURCE_INFO);
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-      // Do nothing.
+      String sourceInfo = mRfasReferenceData.getSourceInfo();
+      mBinding.sourceDescription.setText(sourceInfo);
     }
   }
 
-  private class SecondaryDecoderItemSelectedListener implements OnItemSelectedListener {
+  private class SecondaryDecoderItemSelectedListener implements OnItemClickListener {
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 
       String key = parent.getItemAtPosition(pos).toString();
 
@@ -456,10 +443,6 @@ public class NavyReference extends AppCompatActivity {
       mBinding.decodeDescription.setText(resultString);
       mBinding.sourceDescription.setText(sourceInfo);
     }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-      // Do nothing.
-    }
   }
 
   public void tryRequestReviewIfAppropriate() {
@@ -471,7 +454,7 @@ public class NavyReference extends AppCompatActivity {
           .postDelayed(
               () -> {
                 if (isFinishing()) return;
-                new AlertDialog.Builder(this)
+                new MaterialAlertDialogBuilder(this)
                     .setTitle("[Debug] Review Prompt")
                     .setMessage("In a production build the Play Store review dialog appears here.")
                     .setPositiveButton("OK", null)

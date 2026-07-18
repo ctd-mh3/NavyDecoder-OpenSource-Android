@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <dimen name="applicationTheme_textSize">15sp</dimen>
-
-  <dimen name="mainDescription_textSize">15sp</dimen>
-  <dimen name="mainDescription_paddingTop">10dp</dimen>
-  <dimen name="mainDescription_paddingBottom">10dp</dimen>
-
-  <dimen name="mainDecodeDescription_textSize">15sp</dimen>
-  <dimen name="mainDecodeDescription_paddingTop">10dp</dimen>
-
-  <dimen name="mainDecodeSpinner_marginTop">10dp</dimen>
-  <dimen name="mainDecodeSpinner_marginBottom">10dp</dimen>
-
-  <dimen name="decodeDescription_textSize">15sp</dimen>
-
+  <!--
+  Horizontal padding around the content column in main_screen.xml. Scaled up on
+  larger screens (see values-sw600dp/values-sw720dp) so body text and fields stay
+  a readable line length instead of stretching full-bleed across a tablet.
+  -->
+  <dimen name="content_horizontal_padding">16dp</dimen>
 
 </resources>

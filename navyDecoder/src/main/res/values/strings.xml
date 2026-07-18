@@ -37,14 +37,12 @@
   <string name="topLevelDescription">Quick reference to various US Navy related codes</string>
 
   <string name="mainDecodeDescription">Code Category To Decode:</string>
-  <string name="mainDecodePrompt">Select Code Category To Decode</string>
 
   <string name="secondaryDecodeDescription">Specific Code To Decode:</string>
-  <string name="secondaryDecodePrompt">Select Code To Decode</string>
 
-  <string name="rfasFirstCharacterPrompt">Select 1st Character Of RFAS Code</string>
-  <string name="rfasSecondAndThirdCharactersPrompt">Select 2nd and 3rd Characters Of RFAS Code</string>
-  <string name="rfasFourthCharactersPrompt">Select 4th Character Of RFAS Code</string>
+  <string name="rfasFirstCharacterPrompt">1st Character</string>
+  <string name="rfasSecondAndThirdCharactersPrompt">2nd/3rd Characters</string>
+  <string name="rfasFourthCharactersPrompt">4th Character</string>
 
 
   <string name="decodeDescription">Code Meaning:</string>
