@@ -11,7 +11,7 @@
     position in the view tree and can apply the status-bar inset directly
     as paddingTop. This is the reliable fix for Android 15+ edge-to-edge
     enforcement, where the legacy ActionBarOverlayLayout approach does not
-    consistently honour insets.
+    consistently honor insets.
   -->
   <com.google.android.material.appbar.MaterialToolbar
       android:id="@+id/toolbar"

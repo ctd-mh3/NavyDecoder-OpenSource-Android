@@ -11,7 +11,7 @@
   <string name="share">Share</string>
   <string name="privacyPolicy">Privacy Policy</string>
   <string name="shareChooserTitle">Share via</string>
-  <string name="shareText">Check out Navy Decoder on Google Play!</string>
+  <string name="shareText">Check out Navy Decoder on Google Play Store!</string>
   <string name="authorEmailAddress">support@crashtestdummylimited.com</string>
   <string name="authorEmailSubject">Navy Decoder</string>
   <string name="chooserTitle">Email with</string>
@@ -20,7 +20,7 @@
   <string name="aboutTitle">About Navy Decoder</string>
   <string name="aboutApplicationPurpose">Application for decoding various US Navy information.</string>
   <string name="aboutDeveloper">Developed by Crash Test Dummy (support@crashtestdummylimited.com).</string>
-  <string name="aboutComments">If you like this App, please leave a review in Google Play.  If there are issues, please email me.  Pass me suggestions to make the app better.  Thanks!</string>
+  <string name="aboutComments">If you like this App, please leave a review in Google Play Store.  If there are issues, please email me.  Pass me suggestions to make the app better.  Thanks!</string>
   <string name="aboutDisclaimer">This application is not officially endorsed or sponsored by the US Navy or Department of Defense.</string>
   <string name="aboutVersion">Version:"</string>
 
