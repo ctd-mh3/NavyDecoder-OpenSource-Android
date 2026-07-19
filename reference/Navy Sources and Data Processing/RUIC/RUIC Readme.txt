@@ -11,7 +11,7 @@ In PivotTable Fields section on right
 - ROWS: Remove all field(s) except "NRA Title", "RUIC Title", and "UMUIC" 
 - VALUES: Remove "Count of Records"
 Copy "NRA Title", "RUIC Title", and "UMUIC" columns
-Copy and paste resulting text into excel ('Raw Copied NRH Data' Tab of 'RUIC Listing' spreadsheet)
+Copy and paste resulting text into Microsoft Excel ('Raw Copied NRH Data' Tab of 'RUIC Listing' spreadsheet)
 Tweak Data
 - Look for (Blank) in RUIC_Title or UMUIC and remove those rows or put "Unknown" in those fields
 - If (Blank) in "NRA Title", replace with "Unknown"
@@ -24,12 +24,12 @@ Navy Decoder-Android:
 - Ensure changelog.html is updated to reflect update
 
 Navy Decoder Plus-Android:
-- Copy 'Text-For Sqlite" into 'fill_table_rui_codes.sql' file
-- When finished updating all other sql files follow "readme.txt" in database directory (run createAndCopyDatabase.sh)
+- Copy 'Text-For Sqlite' into 'fill_table_rui_codes.sql' file
+- When finished updating all other SQL files follow "readme.txt" in database directory (run createAndCopyDatabase.sh)
 - Ensure to update DB_VERSION in DecoderDatabase.java file
 - Ensure changelog.html is updated to reflect update
 
 Navy Decoder-iOS:
-- When finished updating all other sql files follow "readme.txt" in database directory (run convertSqlScriptsToJson.pl)
+- When finished updating all other SQL files follow "readme.txt" in database directory (run convertSqlScriptsToJson.pl)
 - Follow instructions in XCode NavyDecoderDatabaseLoader project's readme file
 

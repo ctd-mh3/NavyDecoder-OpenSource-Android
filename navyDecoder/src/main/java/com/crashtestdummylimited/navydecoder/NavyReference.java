@@ -62,8 +62,6 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 
 public class NavyReference extends AppCompatActivity {
 
-  private static final String TAG = NavyReference.class.getSimpleName();
-
   private MainScreenBinding mBinding;
 
   // For Play Store In-App Review
@@ -162,8 +160,8 @@ public class NavyReference extends AppCompatActivity {
 
     // The Toolbar lives in our own layout, so we own its insets directly.
     // Pad its top by the status-bar height so it sits below the status bar on
-    // Android 15+ edge-to-edge. The Toolbar background colour fills that space,
-    // giving the appearance of a coloured status bar.
+    // Android 15+ edge-to-edge. The Toolbar background color fills that space,
+    // giving the appearance of a colored status bar.
     ViewCompat.setOnApplyWindowInsetsListener(
         mBinding.toolbar,
         (v, windowInsets) -> {
