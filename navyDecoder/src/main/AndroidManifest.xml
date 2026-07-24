@@ -3,7 +3,11 @@
 
   <queries>
     <intent>
-      <action android:name="android.intent.action.SENDTO" />
+      <action android:name="android.intent.action.SEND" />
+      <data android:mimeType="message/rfc822" />
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.SEND" />
       <data android:mimeType="text/plain" />
     </intent>
   </queries>
