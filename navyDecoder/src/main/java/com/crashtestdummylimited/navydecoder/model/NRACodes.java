@@ -51,7 +51,7 @@ public class NRACodes implements ReferenceData {
       {"0667", "NRC BALTIMORE, MD"},
       {"0676", "NRC NEW CASTLE, DE"},
       {"0682", "NRC ROCHESTER, NY"},
-      {"0686", "NRC NORFOLK, VA"},
+      {"0686", "NRC NORFOLK, VA / HM-15, VA"},
       {"0696", "NRC QUINCY, MA"},
       {"2302", "SEAL TEAM 18, VA"},
       {"2502", "MERCHANT MARINE, VA"},
@@ -178,7 +178,6 @@ public class NRACodes implements ReferenceData {
       {"6801", "HSM 60, FL"},
       {"6804", "HSC-85. CA"},
       {"0684", "HM-14, VA"},
-      {"0686", "HM-15, VA"},
       {"2287", "VP-69, WA"},
       {"6802", "VP-62, FL"},
       {"6666", "NAF WASHINGTON, DC"}
