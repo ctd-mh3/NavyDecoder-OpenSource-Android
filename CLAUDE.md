@@ -43,7 +43,7 @@ Fields stay empty (showing their floating hint) until the user actively picks a 
 - `com.crashtestdummylimited.navydecoder` — Main activity (`NavyReference.java`)
 - `com.crashtestdummylimited.navydecoder.model` — All code data and interfaces
 - `com.crashtestdummylimited.navydecoder.controller` — `MenuOptions.java` (About, Open Source, Email Author menu items)
-- `com.crashtestdummylimited.navydecoder.util` — `DataLoader.java`, `ChangelogBuilder.java`, `CommonUtilities.java`
+- `com.crashtestdummylimited.navydecoder.util` — `AppUpdateChecker.java`, `CommonUtilities.java`
 
 ### Data Model Pattern
 
@@ -77,8 +77,6 @@ Follow the same steps but implement `RFASReferenceData`, use `Layouts.RFAS` in `
 ### Versioning
 
 - `versionCode` and `versionName` are set in `navyDecoder/build.gradle` → `defaultConfig`.
-- The changelog is an HTML file at `navyDecoder/src/main/res/raw/changelog.html`.
-- On first launch after an upgrade, the changelog dialog is automatically shown (`ChangelogBuilder`). The dialog uses `ChangeDialogStyle` (navy background, white text) and injects CSS into the WebView to match theme colors.
 
 ## Key Configuration
 
