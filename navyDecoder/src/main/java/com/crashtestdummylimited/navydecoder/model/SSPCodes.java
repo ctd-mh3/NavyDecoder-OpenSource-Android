@@ -57,6 +57,7 @@ public class SSPCodes implements ReferenceData {
       {"3150", "Education and Training Management"},
       {"3211", "Operations Research Analysis - Analysis and Assessment"},
       {"3212", "Operations Research - Logistics Analysis"},
+      {"3300", "Human Resources - Civilian Institution"},
       {"4000", "General Applied Disciplines"},
       {"4100", "Applied Mathematics"},
       {"4201", "Operational Sciences - Chemistry"},
@@ -255,7 +256,7 @@ public class SSPCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (APR 2026)";
+    return "NAVPERS 15839I VOL I (JUL 2026)";
   }
 
   @Override
