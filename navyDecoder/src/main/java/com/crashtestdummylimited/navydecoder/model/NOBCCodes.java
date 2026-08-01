@@ -49,7 +49,7 @@ public class NOBCCodes implements ReferenceData {
       {"0109", "Emergency Medical Specialist"},
       {"0110", "Flight Surgeon"},
       {"0111", "Dermatologist"},
-      {"0113", "Physician'S Assistant"},
+      {"0113", "Physician Associate"},
       {"0115", "Psychiatrist"},
       {"0118", "Anesthesiologist"},
       {"0121", "Neurologist"},
@@ -204,6 +204,7 @@ public class NOBCCodes implements ReferenceData {
       {"2591", "Legal Officer"},
       {"2592", "Military Justice Management Officer"},
       {"2605", "Administrative Assistant"},
+      {"2606", "Executive Support Technician"},
       {"2610", "Management Analysis And Control Officer"},
       {"2612", "Management Information Systems Officer"},
       {"2614", "Management Information Center Officer"},
@@ -378,10 +379,7 @@ public class NOBCCodes implements ReferenceData {
       {"7998", "Combat Systems Superintendent"},
       {"7999", "Technical Assistant For Weapons"},
       {"8002", "Aerodynamics Engineering Officer"},
-      {
-        "8004",
-        "Aeronautical Engineering Officer, Aircraft Mechanical, Electronic, Electrical, And Safety Equipment"
-      },
+      {"8004", "Aeronautical Engineering Officer, Aircraft Mechanical, Electronic, Electrical, And Safety Equipment"},
       {"8015", "Aircraft Armament Development Officer"},
       {"8018", "Aircraft Production Officer"},
       {"8020", "Aircraft Survivability Officer"},
@@ -567,10 +565,7 @@ public class NOBCCodes implements ReferenceData {
       {"9217", "Naval Tactical Data System‑‑Combat Information Center Officer"},
       {"9220", "Tactical Air Control Center Watch Officer"},
       {"9222", "Commanding Officer, Afloat"},
-      {
-        "9225",
-        "Naval Tactical Data System‑‑Combat Information Center Watch Officer, Carrier Controlled Approach Controller"
-      },
+      {"9225", "Naval Tactical Data System‑‑Combat Information Center Watch Officer, Carrier Controlled Approach Controller"},
       {"9226", "Tactical Air Control Center Plans Officer"},
       {"9227", "Naval Tactical Data System  Combat Information Center Watch Officer, General"},
       {"9228", "Executive Officer, Afloat"},
@@ -718,6 +713,12 @@ public class NOBCCodes implements ReferenceData {
       {"9684", "Multisensor Intelligence Officer"},
       {"9686", "Antisubmarine Warfare Intelligence Officer"},
       {"9690", "Intelligence Support To CNO/Cyber"},
+      {"9691", "Cyber Staff Operations And Plans Officer"},
+      {"9692", "Offensive Cyberspace Operations Officer"},
+      {"9693", "Defensive Cyberspace Operations Officer"},
+      {"9694", "Cyberspace Operations Officer"},
+      {"9695", "Cyberspace Planner"},
+      {"9696", "Cyberspace Training Officer"},
       {"9705", "ADP System Director"},
       {"9710", "ADP Programs Officer"},
       {"9720", "ADP Plans Officer"},
@@ -769,7 +770,7 @@ public class NOBCCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JAN 2026)";
+    return "NAVPERS 15839I VOL I (JUL 2026)";
   }
 
   @Override
