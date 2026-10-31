@@ -27,8 +27,8 @@ android {
 
     defaultConfig {
         applicationId = "com.crashtestdummylimited.navydecoder"
-        versionCode = 65
-        versionName = "1.63"
+        versionCode = 66
+        versionName = "1.64"
         minSdk = 26
         compileSdk = 37
         targetSdk = 37
