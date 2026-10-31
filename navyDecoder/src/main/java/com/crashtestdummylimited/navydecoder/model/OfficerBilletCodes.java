@@ -83,6 +83,7 @@ public class OfficerBilletCodes implements ReferenceData {
         {"1910", "Unrestricted Line Officer student billet for a prospective Medical Corps officer (Senior Medical Student Program)"},
         {"1920", "Unrestricted Line Officer student billet for a prospective Dental Corps officer"},
         {"1930", "Unrestricted Line Officer student billet for a prospective Medical Service officer (Optometry)"},
+        {"1940", "Unrestricted Line Officer student billet for a prospective Chaplain Corps officer"},
         {"1950", "Unrestricted Line Officer student billet for a prospective Judge Advocate General’s Corps Officer Law Education Program (LEP)"},
         {"1960", "Unrestricted Line Officer student billet for a prospective Medical Corps officer (Medical /Osteopathic Scholarship Program)"},
         {"2000", "Medical Department (Medical Admin) Officer billet which may be filled by an appropriately skilled and experienced individual of one of the Medical Department officer communities (LCDR and above)"},
@@ -100,7 +101,7 @@ public class OfficerBilletCodes implements ReferenceData {
         {"6110", "Limited Duty Officer (Line) billet requiring management in Deck specialty (Surface)"},
         {"6120", "Limited Duty Officer (Line) billet requiring management in Operations specialty (Surface)"},
         {"6130", "Limited Duty Officer (Line) billet requiring management in Engineering/Repair specialty (Surface)"},
-        {"6180", "Limited Duty Officer (Line) billet requiring management in Electronics specialty (Surface)"},
+        {"6180", "Limited Duty Officer (Line) billet requiring management in Combat Systems specialty (Surface)"},
         {"6200", "Limited Duty Officer (Line) billet requiring management in Nuclear Power specialty"},
         {"6230", "Limited Duty Officer (Line) billet requiring management in Engineering/Repair specialty (Submarine)"},
         {"6260", "Limited Duty Officer (Line) billet requiring management in Ordnance specialty (Submarine)"},
@@ -127,7 +128,7 @@ public class OfficerBilletCodes implements ReferenceData {
         {"7130", "Warrant Officer (Line) billet requiring supervision in Engineering specialty (Surface)"},
         {"7150", "Warrant Officer (Line) billet requiring supervision in Special Warfare Technician specialty"},
         {"7170", "Warrant Officer (Line) billet requiring supervision in Naval Special Warfare Combat Crewman"},
-        {"7180", "Warrant Officer (Line) billet requiring supervision in Electronics Technician specialty"},
+        {"7180", "Warrant Officer (Line) billet requiring supervision in Combat Systems Technician specialty"},
         {"7200", "Warrant Officer (Line) billet requiring specialty of a Diving Officer"},
         {"7260", "Warrant Officer (Line) billet requiring supervision in Ordnance Technician specialty (Submarine)"},
         {"7280", "Warrant Officer (Line) billet requiring specialty of an Acoustic Technician"},
@@ -138,7 +139,7 @@ public class OfficerBilletCodes implements ReferenceData {
         {"7360", "Warrant Officer (Line) billet requiring supervision in Aviation Ordnance Technician specialty"},
         {"7371", "Warrant Officer (Line) billet, Code 1 – Operational Flying, requiring the specialty of piloting Unmanned Aerial Vehicles who is aeronautically designated."},
         {"7400", "Warrant Officer (Line) billet requiring supervision in Nuclear Power Technician specialty."},
-        {"7410", "Warrant Officer (Line) billet requiring supervision in Ship's Clerk specialty"},
+        {"7410", "Warrant Officer (Line) billet requiring supervision in Administration Technician specialty"},
         {"7490", "Warrant Officer (Line) billet requiring supervision in Security Technician specialty"},
         {"7520", "Warrant Officer (Staff Corps) billet requiring supervision in Food Service specialty"},
         {"7530", "Warrant Officer (Staff Corps) billet requiring supervision in Civil Engineering specialty"},
@@ -164,7 +165,7 @@ public class OfficerBilletCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JUL 2026)";
+    return "NAVPERS 15839I VOL I (OCT 2026)";
   }
 
   @Override

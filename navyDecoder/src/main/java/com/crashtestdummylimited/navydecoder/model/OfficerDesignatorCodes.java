@@ -86,7 +86,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
         {"611X", "A Limited Duty Officer (Deck - Surface)"},
         {"612X", "A Limited Duty Officer (Operations - Surface)"},
         {"613X", "A Limited Duty Officer (Engineering/Repair - Surface)"},
-        {"618X", "A Limited Duty Officer (Electronics - Surface)"},
+        {"618X", "A Limited Duty Officer (Combat Systems – Surface)"},
         {"620X", "A Limited Duty Officer (Nuclear Power); Formerly DESIG 640X"},
         {"623X", "A Limited Duty Officer (Engineering/Repair - Submarine)"},
         {"626X", "A Limited Duty Officer (Ordnance - Submarine)"},
@@ -112,7 +112,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
         {"713X", "Engineering Technician (Surface)"},
         {"715X", "Special Warfare Technician"},
         {"717X", "A Chief Warrant Officer with sophisticated, technical knowledge in all aspects of the Naval Special Warfare Combat Crewman"},
-        {"718X", "Electronics Technician (Surface)"},
+        {"718X", "Combat Systems Technician (Surface)"},
         {"720X", "Diving Officer"},
         {"726X", "Ordnance Technician (Submarine)"},
         {"728X", "Acoustic Technician"},
@@ -122,7 +122,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
         {"736X", "Aviation Ordnance Technician"},
         {"737X", "Air Vehicle Pilot"},
         {"740X", "Nuclear Power Technician"},
-        {"741X", "Ship's Clerk"},
+        {"741X", "Administration Technician"},
         {"749X", "Security Technician"},
         {"752X", "Food Service Warrant"},
         {"753X", "Civil Engineering Warrant"},
@@ -146,7 +146,7 @@ public class OfficerDesignatorCodes implements ReferenceData {
   @Override
   public String getSourceInfo() {
 
-    return "NAVPERS 15839I VOL I (JUL 2026)";
+    return "NAVPERS 15839I VOL I (OCT 2026)";
   }
 
   @Override
