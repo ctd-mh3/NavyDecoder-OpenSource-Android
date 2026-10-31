@@ -11,3 +11,5 @@ Steps (Not verified to be 100% correct):
 - Copied Officer Code and Officer Description columns to new "Description Codes" tab
   - Deleted all rows that do not end with an "X"
   - Use formula to create SQL statements
+
+31OCT2026: Manually made updates to files.  To-Do, create AI prompt to do these updates
