@@ -20,7 +20,9 @@ Process the attached NEC Chapter 4 Excel file as follows and send me back the up
 SETUP
 1. Copy the "qryChapter4_NEC_Published" tab to a new FIRST tab named "Chapter 4-Processing". Do not change any of the original tabs.
 2. On the new tab, delete all columns except A (NEC) and B (NEC_LONG_TITLE).
-3. Remove every row where LEN(A) is not exactly 4. Do not trim column A before checking the length. Put the removed rows on a new tab named "Removed Rows" with three columns: NEC, NEC_LONG_TITLE, and Reason (for example "range of codes", "trailing space", "blank NEC", "contains **"). If a removed code would be a valid 4-character NEC once trimmed (such as "V94B "), say so in the Reason column.
+3. Remove every row where LEN(A) is not exactly 4, EXCEPT language NECs whose code ends in "**"
+   (obsolete DoD language trigraphs, for example "9QAL**", "9SDH**"): keep those exactly as in the
+   Navy file, code and title unchanged, and note them in column G.
 
 COLUMN LAYOUT (Chapter 4-Processing)
 A  NEC                      – original, unchanged
