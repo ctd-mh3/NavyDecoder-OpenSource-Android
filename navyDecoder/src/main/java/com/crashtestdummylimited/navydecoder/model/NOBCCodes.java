@@ -32,7 +32,8 @@ public class NOBCCodes implements ReferenceData {
     // Stop Android Studio from adding indentation on paste. Android Studio indents pasted text to
     //   match the cursor position and its own code-style rules. Pick one:
     // Paste without formatting: use Edit ▸ Paste Special ▸ Paste as Plain Text, or press
-    //   Cmd+Option+Shift+V on Mac (Ctrl+Alt+Shift+V on Windows). The text goes in exactly as copied.
+    //   Cmd+Option+Shift+V on Mac (Ctrl+Alt+Shift+V on Windows). The text goes in exactly as
+    // copied.
     String[][] CODE_MEANING_DATA = {
       {"0000", "Transient, Patients, Prisoners, And Holdees"},
       {"0002", "Medical Department Staff Officer"},
@@ -409,7 +410,10 @@ public class NOBCCodes implements ReferenceData {
       {"7998", "Combat Systems Superintendent"},
       {"7999", "Technical Assistant For Weapons"},
       {"8002", "Aerodynamics Engineering Officer"},
-      {"8004", "Aeronautical Engineering Officer, Aircraft Mechanical, Electronic, Electrical, And Safety Equipment"},
+      {
+        "8004",
+        "Aeronautical Engineering Officer, Aircraft Mechanical, Electronic, Electrical, And Safety Equipment"
+      },
       {"8015", "Aircraft Armament Development Officer"},
       {"8018", "Aircraft Production Officer"},
       {"8020", "Aircraft Survivability Officer"},
@@ -600,7 +604,10 @@ public class NOBCCodes implements ReferenceData {
       {"9217", "Naval Tactical Data System Combat Information Center Officer"},
       {"9220", "Tactical Air Control Center Watch Officer"},
       {"9222", "Commanding Officer, Afloat"},
-      {"9225", "Naval Tactical Data System Combat Information Center Watch Officer, Carrier Controlled Approach Controller"},
+      {
+        "9225",
+        "Naval Tactical Data System Combat Information Center Watch Officer, Carrier Controlled Approach Controller"
+      },
       {"9226", "Tactical Air Control Center Plans Officer"},
       {"9227", "Naval Tactical Data System Combat Information Center Watch Officer, General"},
       {"9228", "Executive Officer, Afloat"},
