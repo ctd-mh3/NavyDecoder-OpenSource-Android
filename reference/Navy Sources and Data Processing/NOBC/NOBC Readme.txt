@@ -19,8 +19,8 @@ The .sql file must always be generated from values Excel calculated in the final
 
 ═══════════════ PHASE 1 – BUILD THE NEW WORKBOOK ═══════════════
 Attach BOTH files:
-  1. The latest raw NOBC file:  EXCEL_Spreadsheet_for_NOBCs_<Mon>_<YY>.xlsx  (one sheet, 24 columns)
-  2. The previous edition's model workbook:  EXCEL_Spreadsheet_for_NOBCs_<PrevMon>_<YY>.xlsm
+  1. The latest raw NOBC file:  EXCEL Spreadsheet for NOBCs_<Mon>_<YY>.xlsx  (one sheet, 24 columns)
+  2. The previous edition's model workbook:  EXCEL Spreadsheet for NOBCs_<PrevMon>_<YY>.xlsm
 If either file is missing, stop and ask me for it.
 
 STEP 1 – SPELLING CHECK (do this first, before building any output)
@@ -50,7 +50,7 @@ Full alias list (whole-word, case-insensitive, applied in this order), followed 
 Read the pairs array in the template's ReplaceAliasesWholeWord macro (Module1) and compare it with the full list. You cannot edit macro code, so record whether a MACRO UPDATE IS NEEDED (the lists differ) or NOT NEEDED (they match).
 
 STEP 5 – BUILD THE WORKBOOK
-Using the .xlsm as the template, build EXCEL_Spreadsheet_for_NOBCs_<Mon>_<YY>.xlsm, where <Mon>_<YY> comes from the raw file's name. Keep the template's VBA project, tab names, tab order and formatting. Save it as .xlsm.
+Using the .xlsm as the template, build EXCEL Spreadsheet for NOBCs_<Mon>_<YY>.xlsm, where <Mon>_<YY> comes from the raw file's name. Keep the template's VBA project, tab names, tab order and formatting. Save it as .xlsm.
 - Source: leave it as it is in the template.
 - Original: replace all data rows with the rows from the raw file (all 24 columns, unchanged, in the same order). First confirm the raw file's header row exactly matches the template's Original headers. If it doesn't, stop and tell me what's different. Keep the NOBC column as text (keep leading zeros) and freeze the header row.
 - Modified: rebuild one row for every data row in Original (row 2 shown, copied down):
@@ -62,7 +62,8 @@ Using the .xlsm as the template, build EXCEL_Spreadsheet_for_NOBCs_<Mon>_<YY>.xl
     E  NOBC Row Based on Length of 4?   =+IF(LEN(A2)=4,"Y","N")
     F  Macro Tweaked?               =+IF(EXACT(C2,D2),"","YES")
     G  Text for Navy Decoder's NOBCCodes.java file
-                                    =+CONCAT(6 tab characters,"{""",TRIM(A2),""", """,TRIM(D2),"""},")
+                                    =+CONCAT(REPT(" ",6),"{""",TRIM(A2),""", """,TRIM(D2),"""},")
+         (6 spaces, matching the indent in NOBCCodes.java; use spaces, not tab characters, because Excel puts quotes around copied cells that contain tabs)
     H  Text for Navy Decoder Plus's fill_table_nobc_codes.sql file
                                     ="insert into FTS_nobc_codes (suggest_text_1, suggest_text_2, source) values ('" & TRIM(SUBSTITUTE(A2,"'","''")) & "','" & TRIM(SUBSTITUTE(D2,"'","''")) & "','NAVPERS 15839 VOL I (MON YYYY)');"
   - Replace MON YYYY with the month and year from the raw file's name (for example "Oct_26" becomes "OCT 2026").

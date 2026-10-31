@@ -1,7 +1,7 @@
 Download "Excel Version - Additional Qualification Designation (AQD) Codes"
 from https://www.mynavyhr.navy.mil/References/NOOCS-Manual/NOOCS-VOL-1/
 
-**** JUL20206 ****
+**** JUL2026 ****
 Issues that had to be manually fixes
 - DoN Excel row for CI1-6 (Major Project Manager) incorrectly has this as CH1-6 (repeat of the row able).
 - DoN Excel rows for TF1, TF2, and TF3 (Engineer Officer, Motor) incorrectly has this as TEs
@@ -25,11 +25,12 @@ AI Prompt to Perform Processing (31OCT2026):
 AQD PROCESSING
 
 Attach these files:
-  1. The previous edition's processed workbook (the baseline):  EXCEL_Spreadsheet_for_AQDs_<PrevMon>_<YY>.xlsx  (has a "Modified" tab)
-  2. The new raw file:  EXCEL_Spreadsheet_for_AQDs_<Mon>_<YY>.xlsx  (tabs "AQD A SERIES TO 7 SERIES" and "AQD 8 AND 9 SERIES")
+  1. The previous edition's processed workbook (the baseline):  EXCEL Spreadsheet for AQDs_<PrevMon>_<YY>.xlsx  (has a "Modified" tab)
+  2. The new raw file:  EXCEL Spreadsheet for AQDs_<Mon>_<YY>.xlsx  (tabs "AQD A SERIES TO 7 SERIES" and "AQD 8 AND 9 SERIES")
   3. OPTIONAL but recommended: the Navy's Part D change list (ADDITIONS / DELETIONS / REVISIONS) from the NAVPERS 15839I change notice, as a PDF, screenshot or pasted text. Also include the PDF's entries for any codes that are on the list but may be missing from the Excel file.
 If file 1 or 2 is missing, stop and ask me for it. If file 3 is missing, ask once whether I want to provide it. If I don't, skip check 2f.
 <Mon>_<YY> comes from the raw file's name. <PREV> means the baseline's month and year, for example "JUL 2026".
+If you have the full NAVPERS 15839I PDF (or the relevant pages), attach it too. It enables check 2g.
 
 STEP 1 – CHECK THE INPUTS
 - Confirm both raw tabs exist and their header rows exactly match the same tabs in the baseline. If they don't, stop and tell me what's different.
@@ -53,14 +54,15 @@ For each issue, propose a fix and show the evidence (raw row, baseline row, PDF 
      - DELETIONS: confirm each listed code is absent, and flag any listed code that is still present.
      - REVISIONS: for each listed code, report whether anything changed between the baseline and new raw rows, and whether that change affects the 2ND or 3RD TITLE (and so the SQL). Flag listed codes with no change at all, and codes that don't exist in either file (for example 3W2). Report only; don't change anything.
      - Ignore section-header entries in the list (for example "Cyberspace Operations Community 'W'").
-Ask me in ONE question listing every proposed fix and decision, grouped by type (a–f). Let me approve or reject each one, or give my own correction. Wait for my answer.
+  g. PDF title check (only if the PDF pages were provided): compare each code's 2ND and 3RD TITLE in the Excel file with the PDF table. For each difference (for example JX1 "Joint General Planning Level 1" in the Excel file vs "Joint General Planner Level 1" in the PDF), propose using the PDF text. Ignore differences that are only spaces, line breaks or punctuation style. Also note internal inconsistencies within a code group that appear in both the Excel file and the PDF (for example JX0 "Planning" vs JX1–JX3 "Planner"), but don't change them.
+Ask me in ONE question listing every proposed fix and decision, grouped by type (a–g). Let me approve or reject each one, or give my own correction. Wait for my answer.
 If nobody answers (for example in a scheduled run), apply no fixes, continue, and list everything in the reply.
 
 STEP 3 – AUTOMATIC CLEAN-UP (no approval needed; record each change)
-  - Line breaks (CR/LF) inside titles → a space, then TRIM (removes leading and trailing spaces and collapses double spaces).
+  - Line breaks (CR/LF) inside titles → a space, then TRIM (removes leading and trailing spaces and collapses double spaces). Then remove a space after "/" or "-" when there is no space before it ("Training/ Experience" → "Training/Experience", "Anti- Submarine" → "Anti-Submarine"). Add the missing space when a hyphen has a space before it but not after ("Business -Financial" → "Business - Financial"). Leave " / " and " - " (spaces on both sides) unchanged.
   - Non-ASCII punctuation → plain ASCII: ’ ‘ → ', “ ” → ", – — ‑ → -, non-breaking space → space. This also applies to titles added from the PDF. Report any other non-ASCII characters (for example é) without changing them.
 
-STEP 4 – BUILD THE WORKBOOK  EXCEL_Spreadsheet_for_AQDs_<Mon>_<YY>.xlsx
+STEP 4 – BUILD THE WORKBOOK  EXCEL Spreadsheet for AQDs_<Mon>_<YY>.xlsx
 Tabs, in order:
   1. Source – copy from the baseline as it is.
   2. AQD A SERIES TO 7 SERIES – the new raw tab, completely unchanged.
@@ -68,9 +70,9 @@ Tabs, in order:
   4. Modified – one row per candidate row (Step 1), with approved fixes applied (Step 2), and approved PDF additions inserted at their positions:
      A  AQD CODE              – raw code, or the approved corrected or added code
      B  2ND TITLE             – raw title, or the approved fix (carried-forward title, spelling correction, or PDF title)
-     C  2ND TITLE (No CRs)    =+TRIM(SUBSTITUTE(SUBSTITUTE(B2,CHAR(13)," "),CHAR(10)," "))
+     C  2ND TITLE (No CRs)    =+SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TRIM(SUBSTITUTE(SUBSTITUTE(B2,CHAR(13)," "),CHAR(10)," "))," / ","~#~")," - ","~%~"),"/ ","/"),"- ","-")," -","~%~"),"~#~"," / "),"~%~"," - ")
      D  3RD TITLE             – raw title, or the approved fix
-     E  3RD TITLE (No CRs)    =+TRIM(SUBSTITUTE(SUBSTITUTE(D2,CHAR(13)," "),CHAR(10)," "))
+     E  3RD TITLE (No CRs)    =+SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TRIM(SUBSTITUTE(SUBSTITUTE(D2,CHAR(13)," "),CHAR(10)," "))," / ","~#~")," - ","~%~"),"/ ","/"),"- ","-")," -","~%~"),"~#~"," / "),"~%~"," - ")
      F  Length of AQD Code    =+LEN(A2)
      G  Text for Navy Decoder Plus's fill_table_aqd_codes.sql
           ="insert into FTS_aqd_codes (suggest_text_1, suggest_text_2, source) values ('" & SUBSTITUTE(A2,"'","''") & "','" & SUBSTITUTE(TEXTJOIN("-",TRUE,C2,E2),"'","''") & "','NAVPERS 15839I VOL I (MON YYYY)');"
@@ -78,7 +80,7 @@ Tabs, in order:
      H  Change vs <PREV>      – "New" (code not in the baseline), "Changed" (2ND or 3RD TITLE differs from the baseline), or blank (unchanged).
                                 Compare the column C and E text with the baseline Modified tab's columns C and E, ignoring differences that are only spaces, line breaks, or curly vs plain punctuation. Match rows by AQD code, after the Step 2 fixes.
      I  Change Details        – for "Changed": "2ND: old → new; 3RD: old → new". For "New": the source tab and row number, or "From NAVPERS 15839I PDF (not in DoN Excel)".
-     J  Fixes Applied (vs raw) – every way this row differs from the raw file: code corrected, title carried forward, spelling, added from PDF, line breaks, ASCII. Blank if none.
+     J  Fixes Applied (vs raw) – every way this row differs from the raw file: code corrected, title carried forward, spelling, added from PDF, line breaks, slash/hyphen spacing, ASCII. Blank if none.
      - Apply the Step 3 clean-up to columns B and D (line breaks are left in B and D; C and E remove them). Never change the two raw tabs.
      - Formatting: copy the baseline's Modified header style and column widths. Freeze the header row, filter A1:J<last row>, and shade light yellow any row where J is not blank.
   5. Removed Since <PREV> – baseline Modified rows whose AQD code is not in the new Modified tab: AQD CODE, 2ND TITLE, 3RD TITLE, and Note (for example "confirmed removed", "on Navy DELETIONS list", or "not answered"). If there are none, write "(none – every <PREV> AQD code is present)".
@@ -97,10 +99,11 @@ STEP 5 – RECALCULATE AND CREATE THE SQL FILE
 REPLY
 Send both files, then summarize:
 - the number of candidate rows, the number of rows added from the PDF, the number of SQL statements, and the number of section-header and blank rows left out
-- the fixes applied, by type (a–f): code / before → after; the proposed fixes I rejected or that weren't answered
-- the automatic clean-up: the number of line-break fixes, and the ASCII fixes with their codes
+- the fixes applied, by type (a–g): code / before → after; the proposed fixes I rejected or that weren't answered
+- the automatic clean-up: the number of line-break fixes and slash/hyphen-spacing fixes, and the ASCII fixes with their codes
 - changes vs <PREV>: the number New, Changed and Removed, listing each one (code, old → new)
 - Navy change-list cross-check: additions found, missing or added from the PDF; Excel additions not on the list; deletions confirmed; revisions with and without a change in the Excel file (and whether the SQL is affected); typos in the change list
+- PDF title check: titles corrected from the PDF (code, Excel → PDF), and inconsistencies noted but not changed
 - anything else that looks wrong (empty titles, very long titles, parts-column errors). Report these only; don't change them.
 
 
