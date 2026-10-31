@@ -122,7 +122,7 @@ public class RatingCodes implements ReferenceData {
       {"RP", "Religious Programs Specialist"},
       {"RS", "Retail Services Specialist"},
       {"RW", "Robotics Warfare Specialist"},
-      {"SB", "Special Warfare Boat Operator "},
+      {"SB", "Special Warfare Boat Operator"},
       {"SO", "Special Warfare Operator"},
       {"ST", "Sonar Technician"},
       {"STG", "Sonar Technician (Surface)"},
