@@ -77,7 +77,7 @@ public class MASCodes implements ReferenceData {
       {"TMS", "Attending authorized medical/dental/nursing school."},
       {
         "DCO",
-        "CNRFC HQ USE ONLY.  Removed upon completion of Direct Commission Officer Indoctrination Course."
+        "CNRFC HQ USE ONLY. Removed upon completion of Direct Commission Officer Indoctrination Course."
       },
       {
         "TBH",

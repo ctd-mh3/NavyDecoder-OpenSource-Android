@@ -32,7 +32,7 @@ public class IMSCodes implements ReferenceData {
 
   public IMSCodes() {
     String[][] CODE_MEANING_DATA = {
-      {"Blank", "No action required/pending.  Not identified for recall/mobilization"},
+      {"Blank", "No action required/pending. Not identified for recall/mobilization."},
       {"RXX", "Precedes R##. HQ use only for planning purposes."},
       {"RYY", "Precedes R##. HQ use only for planning purposes."},
       {"R##", "Identified for recall/mobilization"},
